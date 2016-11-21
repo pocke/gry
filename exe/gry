@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require 'gry'
+require 'pp'
+
+runner = Gry::RubocopRunner.new(['Style/EmptyElse'], {'Style/EmptyElse' => {'EnforcedStyle' => 'both'}})
+pp runner.run
