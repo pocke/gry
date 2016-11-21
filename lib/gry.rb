@@ -5,6 +5,7 @@ require 'json'
 
 require "gry/version"
 require 'gry/rubocop_runner'
+require 'gry/analyzer'
 
 module Gry
 
