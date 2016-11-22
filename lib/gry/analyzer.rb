@@ -58,6 +58,7 @@ module Gry
 
       futures.each.with_index do |future, idx|
         result = future.value
+        raise future.reason if future.rejected?
         setting = rubocop_args[idx][1]
 
         result['files'].each do |f|
