@@ -43,7 +43,7 @@ module Gry
     def execute_rubocop(rubocop_args)
       res = {}
 
-      rubocop_args.each do |arg|
+      futures = rubocop_args.map do |arg|
         cops, setting = *arg
         setting.each do |cop_name, s|
           res[cop_name] ||= {}
@@ -51,7 +51,14 @@ module Gry
         end
 
         runner = RubocopRunner.new(cops, setting)
-        result = runner.run
+        Concurrent::Future.execute do
+          runner.run
+        end
+      end
+
+      futures.each.with_index do |future, idx|
+        result = future.value
+        setting = rubocop_args[idx][1]
 
         result['files'].each do |f|
           f['offenses'].each do |offense|
