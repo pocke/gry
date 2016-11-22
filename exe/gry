@@ -3,5 +3,5 @@
 require 'gry'
 require 'pp'
 
-analyzer = Gry::Analyzer.new(%w[Style/IndentArray Style/ClassAndModuleChildren Style/DotPosition])
+analyzer = Gry::Analyzer.new(ARGV)
 puts YAML.dump(analyzer.analyze)

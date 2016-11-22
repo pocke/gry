@@ -67,55 +67,21 @@ module Gry
     # @param cop_name [String]
     # @return [Array<Hash>]
     def cop_configs(cop_name)
-      # TODO: implement
-      case cop_name
-      when 'Style/DotPosition'
-        [
-          {
-            'Style/DotPosition' => {
-              'EnforcedStyle' => 'leading'
-            }
-          },
-          {
-            'Style/DotPosition' => {
-              'EnforcedStyle' => 'trailing'
-            }
-          },
-        ]
-      when 'Style/ClassAndModuleChildren'
-        [
-          {
-            'Style/ClassAndModuleChildren' => {
-              'EnforcedStyle' => 'nested'
-            }
-          },
-          {
-            'Style/ClassAndModuleChildren' => {
-              'EnforcedStyle' => 'compact'
-            }
-          },
-        ]
-      when 'Style/IndentArray'
-        [
-          {
-            'Style/IndentArray' => {
-              'EnforcedStyle' => 'special_inside_parentheses'
-            }
-          },
-          {
-            'Style/IndentArray' => {
-              'EnforcedStyle' => 'consistent'
-            }
-          },
-          {
-            'Style/IndentArray' => {
-              'EnforcedStyle' => 'align_brackets'
-            }
-          },
-        ]
-      else
-        raise 'not implemented!'
+      cop_config = default_config[cop_name]
+      supporteds = cop_config['SupportedStyles']
+      return unless supporteds
+
+      supporteds.map do |style|
+        {
+          cop_name => {
+            'EnforcedStyle' => style
+          }
+        }
       end
+    end
+
+    def default_config
+      RuboCop::ConfigLoader.default_configuration
     end
   end
 end
