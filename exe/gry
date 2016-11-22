@@ -1,7 +1,5 @@
 #!/usr/bin/env ruby
 
 require 'gry'
-require 'pp'
 
-analyzer = Gry::Analyzer.new(ARGV)
-puts YAML.dump(analyzer.analyze)
+Gry::CLI.new(ARGV).run

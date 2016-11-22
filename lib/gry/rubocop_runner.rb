@@ -32,7 +32,9 @@ module Gry
       # TODO: error handling
       only = @cops.map{|cop| "--only #{cop}"}.join(' ')
       conf = "--config #{@tmp_setting_path}"
-      `rubocop #{only} #{conf} --format json`
+      cmd = "rubocop #{only} #{conf} --format json"
+      Gry.debug_log "Execute: #{cmd}"
+      `#{cmd}`
     end
 
     def clean
