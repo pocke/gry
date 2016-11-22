@@ -75,7 +75,7 @@ module Gry
     # @param cop_name [String]
     # @return [Array<Hash>]
     def cop_configs(cop_name)
-      cop_config = default_config[cop_name]
+      cop_config = RubocopAdapter.default_config[cop_name]
       supporteds = cop_config['SupportedStyles']
       return unless supporteds
 
@@ -86,10 +86,6 @@ module Gry
           }
         }
       end
-    end
-
-    def default_config
-      RuboCop::ConfigLoader.default_configuration
     end
   end
 end
