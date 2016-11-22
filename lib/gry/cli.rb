@@ -6,7 +6,8 @@ module Gry
 
     def run
       opt = Option.new(@argv)
-      analyzer = Gry::Analyzer.new(opt.args)
+      cops = opt.all ? RubocopAdapter.configurable_cops : opt.args
+      analyzer = Gry::Analyzer.new(cops)
       puts YAML.dump(analyzer.analyze)
     end
   end
