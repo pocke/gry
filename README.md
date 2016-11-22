@@ -1,5 +1,7 @@
 # Gry (Work In Progress!)
 
+[![Build Status](https://travis-ci.org/pocke/gry.svg?branch=master)](https://travis-ci.org/pocke/gry)
+
 Gry generates `.rubocop.yml` automatically.
 
 ## Installation
