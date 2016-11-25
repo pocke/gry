@@ -7,7 +7,7 @@ module Gry
 
     def analyze
       configs = @cops.map{|cop_name| cop_configs(cop_name)}
-      max = configs.max{|a, b| a.size <=> b.size}.size
+      max = configs.max_by(&:size).size
       configs.each do |c|
         c.fill(nil, c.size..(max-1))
       end
