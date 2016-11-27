@@ -25,6 +25,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec", "~> 3.5.0"
   spec.add_development_dependency "rspec-power_assert", "~> 0.4.0"
   spec.add_development_dependency 'coveralls', '~> 0.8.16'
+  spec.add_development_dependency 'simplecov', '~> 0.12.0'
   spec.add_development_dependency "guard", "~> 2.14.0"
   spec.add_development_dependency "guard-rspec", "~> 4.7.3"
   spec.add_development_dependency "guard-bundler", "~> 2.1.0"

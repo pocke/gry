@@ -1,5 +1,14 @@
-require 'coveralls'
-Coveralls.wear!
+if ENV['CI']
+  require 'simplecov'
+  require 'coveralls'
+
+  Coveralls.wear!
+  SimpleCov.formatter = Coveralls::SimpleCov::Formatter
+
+  SimpleCov.add_filter '/spec/'
+
+  SimpleCov.start
+end
 
 require 'gry'
 
