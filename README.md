@@ -1,6 +1,7 @@
 # Gry (Work In Progress!)
 
 [![Build Status](https://travis-ci.org/pocke/gry.svg?branch=master)](https://travis-ci.org/pocke/gry)
+[![Coverage Status](https://coveralls.io/repos/github/pocke/gry/badge.svg?branch=master)](https://coveralls.io/github/pocke/gry?branch=master)
 
 Gry generates `.rubocop.yml` automatically.
 
