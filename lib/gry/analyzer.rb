@@ -24,7 +24,7 @@ module Gry
 
       result = execute_rubocop(rubocop_args)
       confs = result.map do |cop_name, set_count|
-        setting = set_count.sort_by{|pair| pair[1]}.first[0]
+        setting = Strategy.results_to_config(set_count)
         {cop_name => setting}
       end
 
