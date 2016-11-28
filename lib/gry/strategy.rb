@@ -1,7 +1,7 @@
 module Gry
   # Strategy decides a rule config from rubocop results.
   module Strategy
-    # The method returns 
+    # The method returns
     # @param results [Hash{Hash => Integer}] rubocop results
     #   {
     #     {config1} => 20,

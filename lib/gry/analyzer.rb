@@ -64,6 +64,7 @@ module Gry
         result['files'].each do |f|
           f['offenses'].each do |offense|
             cop_name = offense['cop_name']
+            next if cop_name == 'Syntax' # Syntax cop is not configurable.
             res[cop_name][setting[cop_name]] += 1
           end
         end
