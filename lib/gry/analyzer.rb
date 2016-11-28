@@ -17,7 +17,7 @@ module Gry
         setting = compacted.inject({}) do |a, b|
           a.merge(b)
         end
-        cops = @cops[0...compacted.size]
+        cops = setting.keys
 
         [cops, setting]
       end
