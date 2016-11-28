@@ -24,7 +24,7 @@ module Gry
 
       result = execute_rubocop(rubocop_args)
       confs = result.map do |cop_name, set_count|
-        setting = set_count.sort_by{|pair| pair[1]}.first[0]
+        setting = Strategy.results_to_config(set_count)
         {cop_name => setting}
       end
 
@@ -64,6 +64,7 @@ module Gry
         result['files'].each do |f|
           f['offenses'].each do |offense|
             cop_name = offense['cop_name']
+            next if cop_name == 'Syntax' # Syntax cop is not configurable.
             res[cop_name][setting[cop_name]] += 1
           end
         end

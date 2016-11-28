@@ -13,6 +13,7 @@ require 'gry/analyzer'
 require "gry/option"
 require 'gry/cli'
 require 'gry/rubocop_adapter'
+require 'gry/strategy'
 
 module Gry
   @debug = false
