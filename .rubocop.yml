@@ -1,0 +1,6 @@
+AllCops:
+  TargetRubyVersion: 2.3
+inherit_gem:
+  meowcop:
+    - config/rubocop.yml
+
