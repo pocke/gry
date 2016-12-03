@@ -1,6 +1,22 @@
 require 'spec_helper'
 
 describe Gry::Analyzer do
+  describe '#analyze' do
+    let(:analyzer){Gry::Analyzer.new(cops, parallel: parallel)}
+    let(:parallel){true}
+    subject(:analyze){analyzer.analyze}
+
+    context 'with all cops' do
+      let(:cops){Gry::RubocopAdapter.configurable_cops}
+
+      it 'returns a hash' do
+        expect(analyze).to be_a Hash
+        expect(analyze.keys).to be_all{|key| cops.include?(key)}
+        expect(analyze.values).to be_all{|value| value.is_a?(Hash)}
+      end
+    end
+  end
+
   describe '#cop_configs' do
     let(:analyzer){Gry::Analyzer.new([cop_name], parallel: true)}
     let(:cop_name){'Style/AndOr'}
