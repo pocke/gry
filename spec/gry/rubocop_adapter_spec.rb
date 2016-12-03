@@ -45,4 +45,11 @@ describe Gry::RubocopAdapter do
       expect(res).to eq 'SupportedStyles'
     end
   end
+
+  describe '.target_ruby_version' do
+    it 'returns a version' do
+      res = Gry::RubocopAdapter.target_ruby_version
+      expect(res).to be_a Float
+    end
+  end
 end

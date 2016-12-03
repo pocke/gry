@@ -21,5 +21,9 @@ module Gry
     def to_supported_styles(enforced_style)
       RuboCop::Cop::Util.to_supported_styles(enforced_style)
     end
+
+    def target_ruby_version
+      RuboCop::ConfigStore.new.for(Dir.pwd).target_ruby_version
+    end
   end
 end
