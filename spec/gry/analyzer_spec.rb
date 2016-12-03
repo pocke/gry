@@ -45,24 +45,6 @@ describe Gry::Analyzer do
         }
       ]
     end
-    let(:default_config) do
-      {
-        'Style/AndOr' => {
-          'EnforcedStyle' => 'always',
-          'SupportedStyles' => [
-            'always',
-            'conditionals'
-          ]
-        },
-        'Style/BarePercentLiterals' => {
-          'EnforcedStyle' => 'bare_percent',
-          'SupportedStyles' => [
-            'percent_q',
-            'bare_percent'
-          ]
-        }
-      }
-    end
 
     it 'returns cop configs' do
       config = analyzer.__send__(:cop_configs, cop_name)
