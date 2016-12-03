@@ -26,8 +26,9 @@ module Gry
       result = execute_rubocop(rubocop_args)
       confs = result.map do |cop_name, set_count|
         setting = Strategy.results_to_config(set_count)
+        next unless setting
         {cop_name => setting}
-      end
+      end.compact
 
       confs.inject({}) do |a, b|
         a.merge(b)
