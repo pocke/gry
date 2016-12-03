@@ -38,4 +38,11 @@ describe Gry::RubocopAdapter do
     include_examples 'returns_configurable_styles', 'Lint/BlockAlignment', %w[AlignWith]
     include_examples 'returns_configurable_styles', 'Rails/NotNullColumn', %w[]
   end
+
+  describe '.to_supported_styles' do
+    it 'returns a supported style name' do
+      res = Gry::RubocopAdapter.to_supported_styles('EnforcedStyle')
+      expect(res).to eq 'SupportedStyles'
+    end
+  end
 end

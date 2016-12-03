@@ -17,5 +17,9 @@ module Gry
         key.start_with?('Enforced') || %w[AlignWith IndentWhenRelativeTo].include?(key)
       end
     end
+
+    def to_supported_styles(enforced_style)
+      RuboCop::Cop::Util.to_supported_styles(enforced_style)
+    end
   end
 end

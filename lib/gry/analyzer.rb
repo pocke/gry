@@ -80,14 +80,25 @@ module Gry
     # @return [Array<Hash>]
     def cop_configs(cop_name)
       cop_config = RubocopAdapter.default_config[cop_name]
-      supporteds = cop_config['SupportedStyles']
-      return unless supporteds
 
-      supporteds.map do |style|
+      # e.g. %w[EnforcedHashRocketStyle EnforcedColonStyle EnforcedLastArgumentHashStyle]
+      enforced_style_names = RubocopAdapter.configurable_styles(cop_config)
+
+      # e.g. [
+      #   %w[key separator table],
+      #   %w[key separator table],
+      #   w[always_inspect always_ignore ignore_implicit ignore_explicit],
+      # ]
+      supported_styles = enforced_style_names
+        .map{|style_name| RubocopAdapter.to_supported_styles(style_name)}
+        .map{|supported_style_name| cop_config[supported_style_name]}
+
+      supported_styles[0].product(*supported_styles[1..-1]).map do |style_values|
+        conf = style_values
+          .map.with_index{|value, idx| [enforced_style_names[idx], value]}
+          .to_h
         {
-          cop_name => {
-            'EnforcedStyle' => style
-          }
+          cop_name => conf
         }
       end
     end
