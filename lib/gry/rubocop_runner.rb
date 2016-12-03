@@ -29,16 +29,16 @@ module Gry
     end
 
     def run_rubocop
-      # TODO: error handling
-      only = @cops.map{|cop| "--only #{cop}"}.join(' ')
+      only = "--only #{@cops.join(',')}"
       conf = "--config #{@tmp_setting_path}"
       cmd = "rubocop #{only} #{conf} --format json"
       Gry.debug_log "Execute: #{cmd}"
+      # TODO: error handling
       `#{cmd}`
     end
 
     def clean
-      FileUtils.rm(@tmp_setting_path) if @tmp_setting_path
+      FileUtils.rm(@tmp_setting_path) if @tmp_setting_path && !Gry.debug?
     end
   end
 end

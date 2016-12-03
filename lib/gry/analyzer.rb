@@ -97,6 +97,7 @@ module Gry
         conf = style_values
           .map.with_index{|value, idx| [enforced_style_names[idx], value]}
           .to_h
+        conf['Enabled'] = true
         {
           cop_name => conf
         }

@@ -42,12 +42,14 @@ describe Gry::Analyzer do
     include_examples 'returns_cop_configs', 'Style/AndOr', [
       {
         'Style/AndOr' => {
-          'EnforcedStyle' => 'always'
+          'EnforcedStyle' => 'always',
+          'Enabled' => true,
         },
       },
       {
         'Style/AndOr' => {
-          'EnforcedStyle' => 'conditionals'
+          'EnforcedStyle' => 'conditionals',
+          'Enabled' => true,
         },
       }
     ]
@@ -55,12 +57,14 @@ describe Gry::Analyzer do
     include_examples 'returns_cop_configs', 'Style/NumericLiteralPrefix', [
       {
         'Style/NumericLiteralPrefix' => {
-          'EnforcedOctalStyle' => 'zero_with_o'
+          'EnforcedOctalStyle' => 'zero_with_o',
+          'Enabled' => true,
         },
       },
       {
         'Style/NumericLiteralPrefix' => {
-          'EnforcedOctalStyle' => 'zero_only'
+          'EnforcedOctalStyle' => 'zero_only',
+          'Enabled' => true,
         },
       }
     ]
@@ -71,6 +75,7 @@ describe Gry::Analyzer do
           'EnforcedHashRocketStyle' => 'key',
           'EnforcedColonStyle' => 'key',
           'EnforcedLastArgumentHashStyle' => 'always_inspect',
+          'Enabled' => true,
         },
       },
       {
@@ -78,6 +83,7 @@ describe Gry::Analyzer do
           'EnforcedHashRocketStyle' => 'key',
           'EnforcedColonStyle' => 'key',
           'EnforcedLastArgumentHashStyle' => 'always_ignore',
+          'Enabled' => true,
         },
       },
       {
@@ -85,6 +91,7 @@ describe Gry::Analyzer do
           'EnforcedHashRocketStyle' => 'key',
           'EnforcedColonStyle' => 'key',
           'EnforcedLastArgumentHashStyle' => 'ignore_implicit',
+          'Enabled' => true,
         },
       },
       {
@@ -92,6 +99,7 @@ describe Gry::Analyzer do
           'EnforcedHashRocketStyle' => 'key',
           'EnforcedColonStyle' => 'key',
           'EnforcedLastArgumentHashStyle' => 'ignore_explicit',
+          'Enabled' => true,
         },
       },
 
@@ -100,6 +108,7 @@ describe Gry::Analyzer do
           'EnforcedHashRocketStyle' => 'key',
           'EnforcedColonStyle' => 'separator',
           'EnforcedLastArgumentHashStyle' => 'always_inspect',
+          'Enabled' => true,
         },
       },
       {
@@ -107,6 +116,7 @@ describe Gry::Analyzer do
           'EnforcedHashRocketStyle' => 'key',
           'EnforcedColonStyle' => 'separator',
           'EnforcedLastArgumentHashStyle' => 'always_ignore',
+          'Enabled' => true,
         },
       },
       {
@@ -114,6 +124,7 @@ describe Gry::Analyzer do
           'EnforcedHashRocketStyle' => 'key',
           'EnforcedColonStyle' => 'separator',
           'EnforcedLastArgumentHashStyle' => 'ignore_implicit',
+          'Enabled' => true,
         },
       },
       {
@@ -121,6 +132,7 @@ describe Gry::Analyzer do
           'EnforcedHashRocketStyle' => 'key',
           'EnforcedColonStyle' => 'separator',
           'EnforcedLastArgumentHashStyle' => 'ignore_explicit',
+          'Enabled' => true,
         },
       },
 
@@ -129,6 +141,7 @@ describe Gry::Analyzer do
           'EnforcedHashRocketStyle' => 'key',
           'EnforcedColonStyle' => 'table',
           'EnforcedLastArgumentHashStyle' => 'always_inspect',
+          'Enabled' => true,
         },
       },
       {
@@ -136,6 +149,7 @@ describe Gry::Analyzer do
           'EnforcedHashRocketStyle' => 'key',
           'EnforcedColonStyle' => 'table',
           'EnforcedLastArgumentHashStyle' => 'always_ignore',
+          'Enabled' => true,
         },
       },
       {
@@ -143,6 +157,7 @@ describe Gry::Analyzer do
           'EnforcedHashRocketStyle' => 'key',
           'EnforcedColonStyle' => 'table',
           'EnforcedLastArgumentHashStyle' => 'ignore_implicit',
+          'Enabled' => true,
         },
       },
       {
@@ -150,6 +165,7 @@ describe Gry::Analyzer do
           'EnforcedHashRocketStyle' => 'key',
           'EnforcedColonStyle' => 'table',
           'EnforcedLastArgumentHashStyle' => 'ignore_explicit',
+          'Enabled' => true,
         },
       },
 
@@ -159,6 +175,7 @@ describe Gry::Analyzer do
           'EnforcedHashRocketStyle' => 'separator',
           'EnforcedColonStyle' => 'key',
           'EnforcedLastArgumentHashStyle' => 'always_inspect',
+          'Enabled' => true,
         },
       },
       {
@@ -166,6 +183,7 @@ describe Gry::Analyzer do
           'EnforcedHashRocketStyle' => 'separator',
           'EnforcedColonStyle' => 'key',
           'EnforcedLastArgumentHashStyle' => 'always_ignore',
+          'Enabled' => true,
         },
       },
       {
@@ -173,6 +191,7 @@ describe Gry::Analyzer do
           'EnforcedHashRocketStyle' => 'separator',
           'EnforcedColonStyle' => 'key',
           'EnforcedLastArgumentHashStyle' => 'ignore_implicit',
+          'Enabled' => true,
         },
       },
       {
@@ -180,6 +199,7 @@ describe Gry::Analyzer do
           'EnforcedHashRocketStyle' => 'separator',
           'EnforcedColonStyle' => 'key',
           'EnforcedLastArgumentHashStyle' => 'ignore_explicit',
+          'Enabled' => true,
         },
       },
 
@@ -188,6 +208,7 @@ describe Gry::Analyzer do
           'EnforcedHashRocketStyle' => 'separator',
           'EnforcedColonStyle' => 'separator',
           'EnforcedLastArgumentHashStyle' => 'always_inspect',
+          'Enabled' => true,
         },
       },
       {
@@ -195,6 +216,7 @@ describe Gry::Analyzer do
           'EnforcedHashRocketStyle' => 'separator',
           'EnforcedColonStyle' => 'separator',
           'EnforcedLastArgumentHashStyle' => 'always_ignore',
+          'Enabled' => true,
         },
       },
       {
@@ -202,6 +224,7 @@ describe Gry::Analyzer do
           'EnforcedHashRocketStyle' => 'separator',
           'EnforcedColonStyle' => 'separator',
           'EnforcedLastArgumentHashStyle' => 'ignore_implicit',
+          'Enabled' => true,
         },
       },
       {
@@ -209,6 +232,7 @@ describe Gry::Analyzer do
           'EnforcedHashRocketStyle' => 'separator',
           'EnforcedColonStyle' => 'separator',
           'EnforcedLastArgumentHashStyle' => 'ignore_explicit',
+          'Enabled' => true,
         },
       },
 
@@ -217,6 +241,7 @@ describe Gry::Analyzer do
           'EnforcedHashRocketStyle' => 'separator',
           'EnforcedColonStyle' => 'table',
           'EnforcedLastArgumentHashStyle' => 'always_inspect',
+          'Enabled' => true,
         },
       },
       {
@@ -224,6 +249,7 @@ describe Gry::Analyzer do
           'EnforcedHashRocketStyle' => 'separator',
           'EnforcedColonStyle' => 'table',
           'EnforcedLastArgumentHashStyle' => 'always_ignore',
+          'Enabled' => true,
         },
       },
       {
@@ -231,6 +257,7 @@ describe Gry::Analyzer do
           'EnforcedHashRocketStyle' => 'separator',
           'EnforcedColonStyle' => 'table',
           'EnforcedLastArgumentHashStyle' => 'ignore_implicit',
+          'Enabled' => true,
         },
       },
       {
@@ -238,6 +265,7 @@ describe Gry::Analyzer do
           'EnforcedHashRocketStyle' => 'separator',
           'EnforcedColonStyle' => 'table',
           'EnforcedLastArgumentHashStyle' => 'ignore_explicit',
+          'Enabled' => true,
         },
       },
 
@@ -247,6 +275,7 @@ describe Gry::Analyzer do
           'EnforcedHashRocketStyle' => 'table',
           'EnforcedColonStyle' => 'key',
           'EnforcedLastArgumentHashStyle' => 'always_inspect',
+          'Enabled' => true,
         },
       },
       {
@@ -254,6 +283,7 @@ describe Gry::Analyzer do
           'EnforcedHashRocketStyle' => 'table',
           'EnforcedColonStyle' => 'key',
           'EnforcedLastArgumentHashStyle' => 'always_ignore',
+          'Enabled' => true,
         },
       },
       {
@@ -261,6 +291,7 @@ describe Gry::Analyzer do
           'EnforcedHashRocketStyle' => 'table',
           'EnforcedColonStyle' => 'key',
           'EnforcedLastArgumentHashStyle' => 'ignore_implicit',
+          'Enabled' => true,
         },
       },
       {
@@ -268,6 +299,7 @@ describe Gry::Analyzer do
           'EnforcedHashRocketStyle' => 'table',
           'EnforcedColonStyle' => 'key',
           'EnforcedLastArgumentHashStyle' => 'ignore_explicit',
+          'Enabled' => true,
         },
       },
 
@@ -276,6 +308,7 @@ describe Gry::Analyzer do
           'EnforcedHashRocketStyle' => 'table',
           'EnforcedColonStyle' => 'separator',
           'EnforcedLastArgumentHashStyle' => 'always_inspect',
+          'Enabled' => true,
         },
       },
       {
@@ -283,6 +316,7 @@ describe Gry::Analyzer do
           'EnforcedHashRocketStyle' => 'table',
           'EnforcedColonStyle' => 'separator',
           'EnforcedLastArgumentHashStyle' => 'always_ignore',
+          'Enabled' => true,
         },
       },
       {
@@ -290,6 +324,7 @@ describe Gry::Analyzer do
           'EnforcedHashRocketStyle' => 'table',
           'EnforcedColonStyle' => 'separator',
           'EnforcedLastArgumentHashStyle' => 'ignore_implicit',
+          'Enabled' => true,
         },
       },
       {
@@ -297,6 +332,7 @@ describe Gry::Analyzer do
           'EnforcedHashRocketStyle' => 'table',
           'EnforcedColonStyle' => 'separator',
           'EnforcedLastArgumentHashStyle' => 'ignore_explicit',
+          'Enabled' => true,
         },
       },
 
@@ -305,6 +341,7 @@ describe Gry::Analyzer do
           'EnforcedHashRocketStyle' => 'table',
           'EnforcedColonStyle' => 'table',
           'EnforcedLastArgumentHashStyle' => 'always_inspect',
+          'Enabled' => true,
         },
       },
       {
@@ -312,6 +349,7 @@ describe Gry::Analyzer do
           'EnforcedHashRocketStyle' => 'table',
           'EnforcedColonStyle' => 'table',
           'EnforcedLastArgumentHashStyle' => 'always_ignore',
+          'Enabled' => true,
         },
       },
       {
@@ -319,6 +357,7 @@ describe Gry::Analyzer do
           'EnforcedHashRocketStyle' => 'table',
           'EnforcedColonStyle' => 'table',
           'EnforcedLastArgumentHashStyle' => 'ignore_implicit',
+          'Enabled' => true,
         },
       },
       {
@@ -326,6 +365,7 @@ describe Gry::Analyzer do
           'EnforcedHashRocketStyle' => 'table',
           'EnforcedColonStyle' => 'table',
           'EnforcedLastArgumentHashStyle' => 'ignore_explicit',
+          'Enabled' => true,
         },
       },
 
