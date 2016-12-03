@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Gry::Analyzer do
   describe '#cop_configs' do
-    let(:analyzer){Gry::Analyzer.new([cop_name])}
+    let(:analyzer){Gry::Analyzer.new([cop_name], parallel: true)}
     let(:cop_name){'Style/AndOr'}
     let(:expected) do
       [
