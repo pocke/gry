@@ -29,6 +29,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "guard", "~> 2.14.0"
   spec.add_development_dependency "guard-rspec", "~> 4.7.3"
   spec.add_development_dependency "guard-bundler", "~> 2.1.0"
+  spec.add_development_dependency "guard-rubocop", "~> 1.2.0"
   spec.add_development_dependency "rubocop"
   spec.add_development_dependency "meowcop", "~> 1.3.0"
 
