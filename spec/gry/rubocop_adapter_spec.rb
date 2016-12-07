@@ -34,8 +34,6 @@ describe Gry::RubocopAdapter do
       EnforcedColonStyle
       EnforcedLastArgumentHashStyle
     ]
-    include_examples 'returns_configurable_styles', 'Rails/UniqBeforePluck', %w[EnforcedMode]
-    include_examples 'returns_configurable_styles', 'Lint/BlockAlignment', %w[AlignWith]
     include_examples 'returns_configurable_styles', 'Rails/NotNullColumn', %w[]
   end
 
