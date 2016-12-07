@@ -1,9 +1,9 @@
 module Gry
   class Analyzer
     # @param cops [Array<String>] cop names. e.g.) ['Style/EmptyElse']
-    def initialize(cops, parallel:)
+    def initialize(cops, process:)
       @cops = cops
-      @parallel = parallel
+      @process = process == 1 ? 0 : process
     end
 
     def analyze
@@ -45,24 +45,19 @@ module Gry
     def execute_rubocop(rubocop_args)
       res = {}
 
-      futures = rubocop_args.map do |arg|
+      runners = rubocop_args.map do |arg|
         cops, setting = *arg
         setting.each do |cop_name, s|
           res[cop_name] ||= {}
           res[cop_name][s] ||= 0
         end
 
-        runner = RubocopRunner.new(cops, setting)
-        future = Concurrent::Future.execute do
-          runner.run
-        end
-        wait(future) unless @parallel
-        future
+        RubocopRunner.new(cops, setting)
       end
 
-      futures.each.with_index do |future, idx|
-        wait(future)
-        result = future.value
+      results = Parallel.map(runners, in_threads: @process, &:run)
+
+      results.each.with_index do |result, idx|
         setting = rubocop_args[idx][1]
 
         result['files'].each do |f|
@@ -103,11 +98,6 @@ module Gry
           cop_name => conf
         }
       end
-    end
-
-    def wait(future)
-      future.wait
-      raise future.reason if future.rejected?
     end
   end
 end

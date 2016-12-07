@@ -12,8 +12,8 @@ describe Gry::Analyzer do
       end
     end
 
-    let(:analyzer){Gry::Analyzer.new(cops, parallel: parallel)}
-    let(:parallel){true}
+    let(:analyzer){Gry::Analyzer.new(cops, process: process)}
+    let(:process){Parallel.processor_count}
     subject(:analyze){analyzer.analyze}
 
     context 'with all cops' do
@@ -23,7 +23,7 @@ describe Gry::Analyzer do
     end
 
     context 'non parallel mode' do
-      let(:parallel){false}
+      let(:process){1}
       let(:cops){Gry::RubocopAdapter.configurable_cops}
 
       include_examples 'returns_a_valid_rubocop_yml'
@@ -33,7 +33,7 @@ describe Gry::Analyzer do
   describe '#cop_configs' do
     shared_examples 'returns_cop_configs' do |cop_name, expected|
       it "returns cop configs for #{cop_name}" do
-        analyzer = Gry::Analyzer.new([cop_name], parallel: true)
+        analyzer = Gry::Analyzer.new([cop_name], process: 0)
         config = analyzer.__send__(:cop_configs, cop_name)
         expect(config).to eq expected
       end
