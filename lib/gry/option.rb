@@ -2,16 +2,16 @@ module Gry
   class Option
     class ParseError < StandardError; end
 
-    attr_reader :args, :all, :parallel
+    attr_reader :args, :all, :process
 
     def initialize(argv)
       opt = OptionParser.new
       @all = false
-      @parallel = true
+      @process = Parallel.processor_count
 
       opt.on('-d', '--debug') {Gry.debug_mode!}
       opt.on('-a', '--all') {@all = true}
-      opt.on('--[no-]parallel') {|v| @parallel = v}
+      opt.on('-p', '--process=VAL') {|v| @process = v}
 
       @args = opt.parse(argv)
 

@@ -5,7 +5,7 @@ require 'json'
 require 'optparse'
 
 require 'rubocop'
-require 'concurrent/future'
+require 'parallel'
 
 require "gry/version"
 require 'gry/rubocop_runner'
