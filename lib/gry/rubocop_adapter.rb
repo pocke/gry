@@ -30,13 +30,10 @@ module Gry
     end
 
     def rails?
-      if defined?(@rails)
-        @rails
-      else
+      return @rails if defined?(@rails)
       @rails = current_config.to_h.dig('Rails', 'Enabled') ||
         File.exist?('./bin/rails') ||
         File.exist?('./script/rails')
-      end
     end
 
     def current_config
