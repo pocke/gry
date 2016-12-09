@@ -39,5 +39,16 @@ module Gry
     def current_config
       RuboCop::ConfigStore.new.for(Dir.pwd)
     end
+
+    def config_base
+      {
+        'AllCops' => {
+          'TargetRubyVersion' => RubocopAdapter.target_ruby_version,
+        },
+        'Rails' => {
+          'Enabled' => rails?,
+        },
+      }
+    end
   end
 end

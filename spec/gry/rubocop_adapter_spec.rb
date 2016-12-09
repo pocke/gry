@@ -68,4 +68,18 @@ describe Gry::RubocopAdapter do
       expect(res).to be_a Float
     end
   end
+
+  describe '.config_base' do
+    it 'returns a Hash' do
+      base = Gry::RubocopAdapter.config_base
+      expect(base).to match({
+        'AllCops' => {
+          'TargetRubyVersion' => kind_of(Float),
+        },
+        'Rails' => {
+          'Enabled' => boolean,
+        },
+      })
+    end
+  end
 end

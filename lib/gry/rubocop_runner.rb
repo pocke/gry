@@ -5,11 +5,7 @@ module Gry
     # @param setting [Hash] e.g.) {'Style/EmptyElse' => {'EnforcedStyle' => 'both'}}
     def initialize(cops, setting)
       @cops = cops
-      setting_base = {
-        'AllCops' => {
-          'TargetRubyVersion' => RubocopAdapter.target_ruby_version,
-        },
-      }
+      setting_base = RubocopAdapter.config_base
       @setting = setting_base.merge(setting)
       @tmp_setting_path = nil
     end

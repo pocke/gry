@@ -30,9 +30,10 @@ module Gry
         {cop_name => setting}
       end.compact
 
-      confs.inject({}) do |a, b|
+      conf = confs.inject({}) do |a, b|
         a.merge(b)
       end
+      RubocopAdapter.config_base.merge(conf)
     end
 
 
