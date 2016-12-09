@@ -17,7 +17,7 @@ module Gry
     # @param cop_conf [Hash]
     def configurable_styles(cop_conf)
       cop_conf.keys.select do |key|
-        key.start_with?('Enforced') || %w[AlignWith IndentWhenRelativeTo].include?(key)
+        key.start_with?('Enforced')
       end
     end
 
