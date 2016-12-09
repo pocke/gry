@@ -16,6 +16,24 @@ describe Gry::RubocopAdapter do
       expect(cops).to be_include 'Style/Alias'
       expect(cops).not_to be_include 'Rails/NotNullColumn'
     end
+
+    context 'when rails' do
+      it 'returns rails cops' do
+        allow(Gry::RubocopAdapter).to receive(:rails?).and_return(true)
+
+        cops = Gry::RubocopAdapter.configurable_cops
+        expect(cops).to include 'Rails/RequestReferer'
+      end
+    end
+
+    context 'when not rails' do
+      it 'returns rails cops' do
+        allow(Gry::RubocopAdapter).to receive(:rails?).and_return(false)
+
+        cops = Gry::RubocopAdapter.configurable_cops
+        expect(cops).to be_none{|cop| cop.start_with?('Rails')}
+      end
+    end
   end
 
   describe '.configurable_styles' do
