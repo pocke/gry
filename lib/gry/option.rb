@@ -11,7 +11,7 @@ module Gry
 
       opt.on('-d', '--debug') {Gry.debug_mode!}
       opt.on('-a', '--all') {@all = true}
-      opt.on('-p', '--process=VAL') {|v| @process = v}
+      opt.on('-p', '--process=VAL') {|v| @process = v.to_i}
 
       @args = opt.parse(argv)
 
