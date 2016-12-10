@@ -8,7 +8,7 @@ module Gry
       opt = Option.new(@argv)
       cops = opt.all ? RubocopAdapter.configurable_cops : opt.args
       analyzer = Gry::Analyzer.new(cops, process: opt.process)
-      puts YAML.dump(analyzer.analyze)
+      puts analyzer.analyze
     end
   end
 end

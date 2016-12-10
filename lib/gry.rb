@@ -14,6 +14,7 @@ require "gry/option"
 require 'gry/cli'
 require 'gry/rubocop_adapter'
 require 'gry/strategy'
+require 'gry/formatter'
 
 module Gry
   @debug = false

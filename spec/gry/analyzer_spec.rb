@@ -6,11 +6,11 @@ describe Gry::Analyzer do
 
     shared_examples 'returns_a_valid_rubocop_yml' do
       it 'returns a valid .rubocop.yml' do
-        expect(analyze).to be_a Hash
-        expect(analyze.keys).to be_all{|key| %w[Rails AllCops].include?(key) || cops.include?(key)}
-        expect(analyze['Rails']['Enabled']).to match boolean
-        expect(analyze['AllCops']['TargetRubyVersion']).to be_a Float
-        expect(analyze.values).to be_all{|value| value.is_a?(Hash)}
+        result = YAML.load(analyze)
+        expect(result).to be_a Hash
+        expect(result.keys).to be_all{|key| %w[Rails AllCops].include?(key) || cops.include?(key)}
+        expect(result['AllCops']['TargetRubyVersion']).to be_a Float
+        expect(result.values).to be_all{|value| value.is_a?(Hash)}
       end
     end
 
