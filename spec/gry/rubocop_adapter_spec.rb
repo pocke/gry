@@ -70,16 +70,37 @@ describe Gry::RubocopAdapter do
   end
 
   describe '.config_base' do
-    it 'returns a Hash' do
-      base = Gry::RubocopAdapter.config_base
-      expect(base).to match({
-        'AllCops' => {
-          'TargetRubyVersion' => kind_of(Float),
-        },
-        'Rails' => {
-          'Enabled' => boolean,
-        },
-      })
+    context 'when a rails project' do
+      before do
+        allow(Gry::RubocopAdapter).to receive(:rails?).and_return(true)
+      end
+
+      it 'returns a Hash' do
+        base = Gry::RubocopAdapter.config_base
+        expect(base).to match({
+          'AllCops' => {
+            'TargetRubyVersion' => kind_of(Float),
+          },
+          'Rails' => {
+            'Enabled' => true,
+          },
+        })
+      end
+    end
+
+    context 'when not a rails project' do
+      before do
+        allow(Gry::RubocopAdapter).to receive(:rails?).and_return(false)
+      end
+
+      it 'returns a Hash' do
+        base = Gry::RubocopAdapter.config_base
+        expect(base).to match({
+          'AllCops' => {
+            'TargetRubyVersion' => kind_of(Float),
+          },
+        })
+      end
     end
   end
 end
