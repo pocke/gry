@@ -41,14 +41,17 @@ module Gry
     end
 
     def config_base
-      {
+      base = {
         'AllCops' => {
           'TargetRubyVersion' => RubocopAdapter.target_ruby_version,
         },
-        'Rails' => {
-          'Enabled' => rails?,
-        },
       }
+      return base unless rails?
+      base.merge({
+        'Rails' => {
+          'Enabled' => true,
+        }
+      })
     end
   end
 end
