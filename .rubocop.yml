@@ -3,4 +3,3 @@ AllCops:
 inherit_gem:
   meowcop:
     - config/rubocop.yml
-

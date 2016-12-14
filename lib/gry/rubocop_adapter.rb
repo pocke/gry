@@ -11,6 +11,7 @@ module Gry
       conf
         .reject{|_key, cop_conf| configurable_styles(cop_conf).empty?}
         .reject{|key, _cop_conf| !rails? && key.start_with?('Rails/')}
+        .select{|key, _cop_conf| conf = config_specified_by_user.for_cop(key); conf.empty? || !conf['Enabled']}
         .keys
     end
 
@@ -38,6 +39,15 @@ module Gry
 
     def current_config
       RuboCop::ConfigStore.new.for(Dir.pwd)
+    end
+
+    def config_specified_by_user
+      path = RuboCop::ConfigLoader.configuration_file_for(Dir.pwd)
+      if path == RuboCop::ConfigLoader::DEFAULT_FILE
+        RuboCop::Config.new
+      else
+        RuboCop::ConfigLoader.load_file(path)
+      end
     end
 
     def config_base
