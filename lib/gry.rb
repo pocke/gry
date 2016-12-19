@@ -3,6 +3,7 @@ require 'tempfile'
 require 'yaml'
 require 'json'
 require 'optparse'
+require 'open3'
 
 require 'rubocop'
 require 'parallel'

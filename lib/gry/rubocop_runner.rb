@@ -12,8 +12,8 @@ module Gry
 
     def run
       prepare
-      out = run_rubocop
-      JSON.parse(out)
+      stdout, stderr = run_rubocop
+      [JSON.parse(stdout), parse_stderr(stderr)]
     ensure
       clean
     end
@@ -30,16 +30,29 @@ module Gry
     end
 
     def run_rubocop
-      only = "--only #{@cops.join(',')}"
-      conf = "--config #{@tmp_setting_path}"
-      cmd = "rubocop #{only} #{conf} --format json"
-      Gry.debug_log "Execute: #{cmd}"
-      # TODO: error handling
-      `#{cmd}`
+      cmd = %W[
+        rubocop
+        --only #{@cops.join(',')}
+        --config #{@tmp_setting_path}
+        --format json
+      ]
+      Gry.debug_log "Execute: #{cmd.join(' ')}"
+      stdout, stderr, _status = *Open3.capture3(*cmd)
+      Gry.debug_log stderr
+      [stdout, stderr]
     end
 
     def clean
       FileUtils.rm(@tmp_setting_path) if @tmp_setting_path && !Gry.debug?
+    end
+
+    # @param stderr [String] stderr output of RuboCop
+    # @return [Array<String>] crashed cop list
+    def parse_stderr(stderr)
+      stderr
+        .scan(%r!An error occurred while ([\w/]+) cop was inspecting!)
+        .flatten
+        .uniq
     end
   end
 end
