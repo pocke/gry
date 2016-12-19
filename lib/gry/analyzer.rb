@@ -49,7 +49,10 @@ module Gry
 
       results = Parallel.map(runners, in_threads: @process, &:run)
 
-      results.each.with_index do |result, idx|
+      crashed_cops = []
+      results.each.with_index do |(result, crashed_cops_in_this_step), idx|
+        crashed_cops.concat(crashed_cops_in_this_step)
+
         setting = rubocop_args[idx][1]
 
         result['files'].each do |f|
@@ -59,6 +62,10 @@ module Gry
             res[cop_name][setting[cop_name]] += 1
           end
         end
+      end
+
+      crashed_cops.each do |cop_name|
+        res.delete(cop_name)
       end
 
       res

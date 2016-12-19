@@ -3,6 +3,7 @@ require 'tempfile'
 require 'yaml'
 require 'json'
 require 'optparse'
+require 'open3'
 
 require 'rubocop'
 require 'parallel'
@@ -26,7 +27,14 @@ module Gry
     @debug = true
   end
 
+  @mu_debug_print = Thread::Mutex.new
   def self.debug_log(msg)
-    $stderr.puts msg if debug?
+    @mu_debug_print.lock
+
+    return unless debug?
+    message = msg.is_a?(String) ? msg : msg.inspect
+    $stderr.puts message
+  ensure
+    @mu_debug_print.unlock
   end
 end
