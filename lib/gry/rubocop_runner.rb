@@ -14,7 +14,7 @@ module Gry
       prepare
       stdout, stderr = run_rubocop
       crashed_cops = parse_stderr(stderr)
-      Gry.debug_log crashed_cops
+      Gry.debug_log "Crashed cops: #{crashed_cops}"
       [JSON.parse(stdout), crashed_cops]
     ensure
       clean

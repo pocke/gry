@@ -27,9 +27,14 @@ module Gry
     @debug = true
   end
 
+  @mu_debug_print = Thread::Mutex.new
   def self.debug_log(msg)
+    @mu_debug_print.lock
+
     return unless debug?
     message = msg.is_a?(String) ? msg : msg.inspect
     $stderr.puts message
+  ensure
+    @mu_debug_print.unlock
   end
 end

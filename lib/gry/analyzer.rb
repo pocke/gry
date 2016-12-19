@@ -51,7 +51,7 @@ module Gry
 
       crashed_cops = []
       results.each.with_index do |(result, crashed_cops_in_this_step), idx|
-        crashed_cops.push(crashed_cops_in_this_step)
+        crashed_cops.concat(crashed_cops_in_this_step)
 
         setting = rubocop_args[idx][1]
 
