@@ -13,7 +13,9 @@ module Gry
     def run
       prepare
       stdout, stderr = run_rubocop
-      [JSON.parse(stdout), parse_stderr(stderr)]
+      crashed_cops = parse_stderr(stderr)
+      Gry.debug_log crashed_cops
+      [JSON.parse(stdout), crashed_cops]
     ensure
       clean
     end
@@ -38,7 +40,6 @@ module Gry
       ]
       Gry.debug_log "Execute: #{cmd.join(' ')}"
       stdout, stderr, _status = *Open3.capture3(*cmd)
-      Gry.debug_log stderr
       [stdout, stderr]
     end
 

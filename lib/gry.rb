@@ -28,6 +28,8 @@ module Gry
   end
 
   def self.debug_log(msg)
-    $stderr.puts msg if debug?
+    return unless debug?
+    message = msg.is_a?(String) ? msg : msg.inspect
+    $stderr.puts message
   end
 end
