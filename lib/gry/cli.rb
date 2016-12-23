@@ -6,6 +6,11 @@ module Gry
 
     def run
       opt = Option.new(@argv)
+      if opt.version
+        rubocop_version, = *Open3.capture3('rubocop', '--verbose-version')
+        puts "gry #{VERSION} (RuboCop #{rubocop_version.chomp})"
+        return
+      end
       cops = opt.all ? RubocopAdapter.configurable_cops : opt.args
       analyzer = Gry::Analyzer.new(cops, process: opt.process)
       puts analyzer.analyze
