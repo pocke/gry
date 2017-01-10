@@ -4,3 +4,4 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'rubocop', github: 'bbatsov/rubocop'
+gem 'meowcop', github: 'pocke/meowcop', branch: 'rubocop-master'
