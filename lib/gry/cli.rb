@@ -12,6 +12,9 @@ module Gry
         return
       end
       cops = opt.all ? RubocopAdapter.configurable_cops : opt.args
+      if opt.fast
+        cops.reject!{|cop| cop == 'Style/AlignHash'}
+      end
       analyzer = Gry::Analyzer.new(cops, process: opt.process)
       puts analyzer.analyze
     end
