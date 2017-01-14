@@ -4,7 +4,7 @@ module Gry
       @argv = argv
     end
 
-    def run
+    def run(writer)
       opt = Option.new(@argv)
       if opt.version
         rubocop_version, = *Open3.capture3('rubocop', '--verbose-version')
@@ -19,7 +19,7 @@ module Gry
       analyzer = Gry::Analyzer.new(cops, process: opt.process)
 
       gry_result = analyzer.analyze
-      puts Formatter.format(gry_result)
+      writer.puts Formatter.format(gry_result)
     end
   end
 end

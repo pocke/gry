@@ -2,4 +2,4 @@
 
 require 'gry'
 
-Gry::CLI.new(ARGV).run
+Gry::CLI.new(ARGV).run(STDOUT)
