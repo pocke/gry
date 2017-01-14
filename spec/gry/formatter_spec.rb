@@ -21,8 +21,8 @@ describe Gry::Formatter do
 AllCops:
   TargetRubyVersion: 2.3
 
-# EnforcedStyle: leading => 10
-# EnforcedStyle: trailing => 20
+# EnforcedStyle: leading => 10 offenses
+# EnforcedStyle: trailing => 20 offenses
 Style/DotPosition:
   EnforcedStyle: leading
   Enabled: true
@@ -61,14 +61,14 @@ Style/DotPosition:
 AllCops:
   TargetRubyVersion: 2.3
 
-# EnforcedStyle: leading => 10
-# EnforcedStyle: trailing => 20
+# EnforcedStyle: leading => 10 offenses
+# EnforcedStyle: trailing => 20 offenses
 Style/DotPosition:
   EnforcedStyle: leading
   Enabled: true
 
-# EnforcedStyle: prefer_alias => 42
-# EnforcedStyle: prefer_alias_method => 5
+# EnforcedStyle: prefer_alias => 42 offenses
+# EnforcedStyle: prefer_alias_method => 5 offenses
 Style/Alias:
   EnforcedStyle: prefer_alias_method
   Enabled: true
@@ -109,10 +109,10 @@ Style/Alias:
 AllCops:
   TargetRubyVersion: 2.3
 
-# EnforcedStyle: space, EnforcedStyleForEmptyBraces: no_space => 1
-# EnforcedStyle: space, EnforcedStyleForEmptyBraces: space => 3
-# EnforcedStyle: no_space, EnforcedStyleForEmptyBraces: no_space => 2
-# EnforcedStyle: no_space, EnforcedStyleForEmptyBraces: space => 4
+# EnforcedStyle: space, EnforcedStyleForEmptyBraces: no_space => 1 offense
+# EnforcedStyle: space, EnforcedStyleForEmptyBraces: space => 3 offenses
+# EnforcedStyle: no_space, EnforcedStyleForEmptyBraces: no_space => 2 offenses
+# EnforcedStyle: no_space, EnforcedStyleForEmptyBraces: space => 4 offenses
 Style/SpaceInsideHashLiteralBraces:
   EnforcedStyle: space
   EnforcedStyleForEmptyBraces: no_space
