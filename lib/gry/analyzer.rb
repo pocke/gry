@@ -23,8 +23,7 @@ module Gry
         [cops, setting]
       end
 
-      gry_result = execute_rubocop(rubocop_args)
-      Formatter.format(gry_result)
+      execute_rubocop(rubocop_args)
     end
 
 

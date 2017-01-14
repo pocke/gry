@@ -11,12 +11,15 @@ module Gry
         puts "gry #{VERSION} (RuboCop #{rubocop_version.chomp})"
         return
       end
+
       cops = opt.all ? RubocopAdapter.configurable_cops : opt.args
       if opt.fast
         cops.reject!{|cop| cop == 'Style/AlignHash'}
       end
       analyzer = Gry::Analyzer.new(cops, process: opt.process)
-      puts analyzer.analyze
+
+      gry_result = analyzer.analyze
+      puts Formatter.format(gry_result)
     end
   end
 end

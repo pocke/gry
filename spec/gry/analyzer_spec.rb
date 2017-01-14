@@ -6,11 +6,27 @@ describe Gry::Analyzer do
 
     shared_examples 'returns_a_valid_rubocop_yml' do
       it 'returns a valid .rubocop.yml' do
-        result = YAML.load(analyze)
+        result = analyze
         expect(result).to be_a Hash
-        expect(result.keys).to be_all{|key| %w[Rails AllCops].include?(key) || cops.include?(key)}
-        expect(result['AllCops']['TargetRubyVersion']).to be_a Float
-        expect(result.values).to be_all{|value| value.is_a?(Hash)}
+        result.keys.each do |key|
+          is_asserted_by{ key.is_a? String }
+        end
+
+        result.values.each do |value|
+          is_asserted_by{ value.is_a? Hash }
+          value.keys.each do |key|
+            is_asserted_by{ key.is_a? Hash }
+          end
+
+          value.values.each do |v|
+            is_asserted_by{ v.is_a? Integer }
+          end
+        end
+        # result = YAML.load(analyze)
+        # expect(result).to be_a Hash
+        # expect(result.keys).to be_all{|key| %w[Rails AllCops].include?(key) || cops.include?(key)}
+        # expect(result['AllCops']['TargetRubyVersion']).to be_a Float
+        # expect(result.values).to be_all{|value| value.is_a?(Hash)}
       end
     end
 
@@ -20,6 +36,15 @@ describe Gry::Analyzer do
 
     context 'with all cops' do
       let(:cops){Gry::RubocopAdapter.configurable_cops}
+
+      include_examples 'returns_a_valid_rubocop_yml'
+    end
+
+    context 'with fast cops only' do
+      let(:cops)  {
+        Gry::RubocopAdapter.configurable_cops
+          .reject{|cop| cop == 'Style/AlignHash'}
+      }
 
       include_examples 'returns_a_valid_rubocop_yml'
     end

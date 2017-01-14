@@ -1,3 +1,5 @@
+require 'rspec-power_assert'
+
 if ENV['CI']
   require 'simplecov'
   require 'coveralls'
