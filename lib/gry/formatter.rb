@@ -27,8 +27,16 @@ module Gry
           .reject{|key, _| key == 'Enabled'}
           .map{|key, value| "#{key}: #{value}"}
           .join(', ')
-        "# #{x} => #{count}\n"
+        "# #{x} => #{count} #{offenses(count)}\n"
       end.join
+    end
+
+    def self.offenses(count)
+      if count > 1
+        'offenses'
+      else
+        'offense'
+      end
     end
   end
 end
