@@ -8,7 +8,7 @@ module Gry
       opt = Option.new(@argv)
       if opt.version
         rubocop_version, = *Open3.capture3('rubocop', '--verbose-version')
-        puts "gry #{VERSION} (RuboCop #{rubocop_version.chomp})"
+        writer.puts "gry #{VERSION} (RuboCop #{rubocop_version.chomp})"
         return
       end
 
