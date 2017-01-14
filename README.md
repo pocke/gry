@@ -4,7 +4,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/pocke/gry/badge.svg?branch=master)](https://coveralls.io/github/pocke/gry?branch=master)
 [![Gem Version](https://badge.fury.io/rb/gry.svg)](https://badge.fury.io/rb/gry)
 
-Gry generates `.rubocop.yml` automatically.
+Gry generates `.rubocop.yml` automatically from your source code.
 
 ## Installation
 
