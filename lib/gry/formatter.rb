@@ -1,13 +1,11 @@
 module Gry
   module Formatter
-    # @param gry_result [Hash]
-    #   {'Style/DotPosition' => { {conf} => count}}
+    # @param gry_result [Array<Law>]
     # @return [String] a yaml string
-    def self.format(gry_result)
-      confs = gry_result.map do |cop_name, set_count|
-        setting = Strategy.results_to_config(set_count)
-        next unless setting
-        to_comment(set_count) + to_yaml({cop_name => setting})
+    def self.format(laws)
+      confs = laws.map do |law|
+        to_comment(law.bill) +
+          to_yaml({law.name => law.letter})
       end.compact
 
       to_yaml(RubocopAdapter.config_base) +

@@ -16,10 +16,16 @@ module Gry
       if opt.fast
         cops.reject!{|cop| cop == 'Style/AlignHash'}
       end
-      analyzer = Gry::Analyzer.new(cops, process: opt.process)
+      pilot_study = Gry::PilotStudy.new(cops, process: opt.process)
 
-      gry_result = analyzer.analyze
-      writer.puts Formatter.format(gry_result)
+      bills = pilot_study.analyze
+      # TODO: Specify the value from option
+      congress = Congress.new(count_limit: 10)
+      laws = bills.map do |cop_name, bill|
+        congress.discuss(cop_name, bill)
+      end.compact
+
+      writer.puts Formatter.format(laws)
     end
   end
 end

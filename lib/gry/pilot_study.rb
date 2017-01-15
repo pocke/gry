@@ -1,5 +1,5 @@
 module Gry
-  class Analyzer
+  class PilotStudy
     # @param cops [Array<String>] cop names. e.g.) ['Style/EmptyElse']
     def initialize(cops, process:)
       @cops = cops
