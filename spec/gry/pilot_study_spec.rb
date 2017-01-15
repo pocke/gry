@@ -22,11 +22,6 @@ describe Gry::PilotStudy do
             is_asserted_by{ v.is_a? Integer }
           end
         end
-        # result = YAML.load(analyze)
-        # expect(result).to be_a Hash
-        # expect(result.keys).to be_all{|key| %w[Rails AllCops].include?(key) || cops.include?(key)}
-        # expect(result['AllCops']['TargetRubyVersion']).to be_a Float
-        # expect(result.values).to be_all{|value| value.is_a?(Hash)}
       end
     end
 
