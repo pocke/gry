@@ -16,7 +16,7 @@ module Gry
       if opt.fast
         cops.reject!{|cop| cop == 'Style/AlignHash'}
       end
-      analyzer = Gry::Analyzer.new(cops, process: opt.process)
+      analyzer = Gry::PilotStudy.new(cops, process: opt.process)
 
       gry_result = analyzer.analyze
       writer.puts Formatter.format(gry_result)

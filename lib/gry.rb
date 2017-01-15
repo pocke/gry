@@ -10,7 +10,7 @@ require 'parallel'
 
 require "gry/version"
 require 'gry/rubocop_runner'
-require 'gry/analyzer'
+require 'gry/pilot_study'
 require "gry/option"
 require 'gry/cli'
 require 'gry/rubocop_adapter'

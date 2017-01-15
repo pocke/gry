@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Gry::Analyzer do
+describe Gry::PilotStudy do
   describe '#analyze' do
     break if ENV['DONT_RUN_SLOW_SPEC']
 
@@ -30,7 +30,7 @@ describe Gry::Analyzer do
       end
     end
 
-    let(:analyzer){Gry::Analyzer.new(cops, process: process)}
+    let(:analyzer){Gry::PilotStudy.new(cops, process: process)}
     let(:process){Parallel.processor_count}
     subject(:analyze){analyzer.analyze}
 
@@ -60,7 +60,7 @@ describe Gry::Analyzer do
   describe '#cop_configs' do
     shared_examples 'returns_cop_configs' do |cop_name, expected|
       it "returns cop configs for #{cop_name}" do
-        analyzer = Gry::Analyzer.new([cop_name], process: 0)
+        analyzer = Gry::PilotStudy.new([cop_name], process: 0)
         config = analyzer.__send__(:cop_configs, cop_name)
         expect(config).to eq expected
       end
