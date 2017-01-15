@@ -10,11 +10,12 @@ require 'parallel'
 
 require "gry/version"
 require 'gry/rubocop_runner'
+require 'gry/congress'
+require 'gry/law'
 require 'gry/pilot_study'
 require "gry/option"
 require 'gry/cli'
 require 'gry/rubocop_adapter'
-require 'gry/strategy'
 require 'gry/formatter'
 
 module Gry

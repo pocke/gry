@@ -4,18 +4,24 @@ describe Gry::Formatter do
   describe '.format' do
     context 'simple' do
       it 'retrns a YAML' do
-        gry_result = {
-          'Style/DotPosition' => {
-            {
-              'EnforcedStyle' => 'leading',
-              'Enabled' => true,
-            } => 10,
-            {
-              'EnforcedStyle' => 'trailing',
-              'Enabled' => true,
-            } => 20,
-          }
+        bill = {
+          {
+            'EnforcedStyle' => 'leading',
+            'Enabled' => true,
+          } => 10,
+          {
+            'EnforcedStyle' => 'trailing',
+            'Enabled' => true,
+          } => 20,
         }
+        letter = {
+          'EnforcedStyle' => 'leading',
+          'Enabled' => true,
+        }
+
+        laws = [
+          Gry::Law.new('Style/DotPosition', bill, letter)
+        ]
 
         expected = <<-END
 AllCops:
@@ -28,14 +34,14 @@ Style/DotPosition:
   Enabled: true
         END
 
-        expect(Gry::Formatter.format(gry_result)).to eq expected
+        expect(Gry::Formatter.format(laws)).to eq expected
       end
     end
 
     context 'has two results' do
       it 'returns a YAML' do
-        gry_result = {
-          'Style/DotPosition' => {
+        laws = [
+          Gry::Law.new('Style/DotPosition', {
             {
               'EnforcedStyle' => 'leading',
               'Enabled' => true,
@@ -44,8 +50,11 @@ Style/DotPosition:
               'EnforcedStyle' => 'trailing',
               'Enabled' => true,
             } => 20,
-          },
-          'Style/Alias' => {
+          },{
+            'EnforcedStyle' => 'leading',
+            'Enabled' => true,
+          }),
+          Gry::Law.new('Style/Alias', {
             {
               'EnforcedStyle' => 'prefer_alias',
               'Enabled' => true,
@@ -54,9 +63,12 @@ Style/DotPosition:
               'EnforcedStyle' => 'prefer_alias_method',
               'Enabled' => true,
             } => 5,
-          }
-        }
-
+          },{
+            'EnforcedStyle' => 'prefer_alias_method',
+            'Enabled' => true,
+          })
+        ]
+        
         expected = <<-END
 AllCops:
   TargetRubyVersion: 2.3
@@ -74,36 +86,43 @@ Style/Alias:
   Enabled: true
         END
 
-        expect(Gry::Formatter.format(gry_result)).to eq expected
+        expect(Gry::Formatter.format(laws)).to eq expected
       end
     end
 
     context 'has a complex cop' do
       it 'returns a YAML' do
-        gry_result = {
-          'Style/SpaceInsideHashLiteralBraces' => {
-            {
-              'EnforcedStyle' => 'space',
-              'EnforcedStyleForEmptyBraces' => 'no_space',
-              'Enabled' => true,
-            } => 1,
-            {
-              'EnforcedStyle' => 'space',
-              'EnforcedStyleForEmptyBraces' => 'space',
-              'Enabled' => true,
-            } => 3,
-            {
-              'EnforcedStyle' => 'no_space',
-              'EnforcedStyleForEmptyBraces' => 'no_space',
-              'Enabled' => true,
-            } => 2,
-            {
-              'EnforcedStyle' => 'no_space',
-              'EnforcedStyleForEmptyBraces' => 'space',
-              'Enabled' => true,
-            } => 4,
-          },
+        bill = {
+          {
+            'EnforcedStyle' => 'space',
+            'EnforcedStyleForEmptyBraces' => 'no_space',
+            'Enabled' => true,
+          } => 1,
+          {
+            'EnforcedStyle' => 'space',
+            'EnforcedStyleForEmptyBraces' => 'space',
+            'Enabled' => true,
+          } => 3,
+          {
+            'EnforcedStyle' => 'no_space',
+            'EnforcedStyleForEmptyBraces' => 'no_space',
+            'Enabled' => true,
+          } => 2,
+          {
+            'EnforcedStyle' => 'no_space',
+            'EnforcedStyleForEmptyBraces' => 'space',
+            'Enabled' => true,
+          } => 4,
         }
+        letter = {
+          'EnforcedStyle' => 'space',
+          'EnforcedStyleForEmptyBraces' => 'no_space',
+          'Enabled' => true,
+        }
+
+        laws = [
+          Gry::Law.new('Style/SpaceInsideHashLiteralBraces', bill, letter)
+        ]
 
         expected = <<-END
 AllCops:
@@ -119,7 +138,7 @@ Style/SpaceInsideHashLiteralBraces:
   Enabled: true
         END
 
-        expect(Gry::Formatter.format(gry_result)).to eq expected
+        expect(Gry::Formatter.format(laws)).to eq expected
       end
     end
   end
