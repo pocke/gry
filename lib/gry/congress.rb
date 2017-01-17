@@ -1,7 +1,8 @@
 module Gry
   class Congress
-    def initialize(max_count:)
+    def initialize(max_count:, min_difference:)
       @max_count = max_count
+      @min_difference = min_difference
     end
 
     # @param name [String] cop name
@@ -13,13 +14,15 @@ module Gry
     #   }
     # @return [Law]
     def discuss(name, bill)
-      letter = bill
-        .select{|_conf, count| count <= @max_count }
-        .sort_by{|_conf, count| count}
-        .first # to get minimum conf and count
-        &.first # to get conf
+      # [[conf, count], ...]
+      sorted = bill.sort_by{|_conf, count| count}
+      min_count = sorted.first.last
+      return nil if min_count > @max_count
 
-      return nil unless letter
+      second_count = sorted[1].last
+      return nil if second_count - min_count < @min_difference
+
+      letter = sorted.first.first
       Law.new(name, bill, letter)
     end
   end

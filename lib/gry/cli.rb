@@ -20,7 +20,10 @@ module Gry
 
       bills = pilot_study.analyze
       # TODO: Specify the value from option
-      congress = Congress.new(max_count: opt.max_count)
+      congress = Congress.new(
+        max_count: opt.max_count,
+        min_difference: opt.min_difference,
+      )
       laws = bills.map do |cop_name, bill|
         congress.discuss(cop_name, bill)
       end.compact
