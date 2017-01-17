@@ -117,4 +117,14 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = :random
+
+  shared_context :chdir do
+    before do
+      Dir.chdir('lib/')
+    end
+
+    after do
+      Dir.chdir('../')
+    end
+  end
 end

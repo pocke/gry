@@ -4,6 +4,8 @@ describe Gry::PilotStudy do
   describe '#analyze' do
     break if ENV['DONT_RUN_SLOW_SPEC']
 
+    include_context :chdir
+
     shared_examples 'returns_a_valid_rubocop_yml' do
       it 'returns a valid .rubocop.yml' do
         result = analyze

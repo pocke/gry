@@ -3,6 +3,7 @@ require 'stringio'
 
 describe Gry::CLI do
   describe '#run' do
+    include_context :chdir
 
     let(:cli){Gry::CLI.new(args)}
     let(:out){StringIO.new}
