@@ -1,7 +1,7 @@
 module Gry
   class Congress
-    def initialize(count_limit:)
-      @count_limit = count_limit
+    def initialize(max_count:)
+      @max_count = max_count
     end
 
     # @param name [String] cop name
@@ -14,7 +14,7 @@ module Gry
     # @return [Law]
     def discuss(name, bill)
       letter = bill
-        .select{|_conf, count| count <= @count_limit }
+        .select{|_conf, count| count <= @max_count }
         .sort_by{|_conf, count| count}
         .first # to get minimum conf and count
         &.first # to get conf

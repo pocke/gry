@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Gry::Congress do
   describe '#discuss' do
-    subject(:discuss){Gry::Congress.new(count_limit: count_limit).discuss(name, bill)}
+    subject(:discuss){Gry::Congress.new(max_count: count_limit).discuss(name, bill)}
 
     context 'when accepts' do
       let(:bill) do
