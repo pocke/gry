@@ -6,7 +6,7 @@ module Gry
       opt = OptionParser.new
       @version = false
       @process = Parallel.processor_count
-      @fast = false
+      @fast = true
       @max_count = 10
       @min_difference = 10
 
@@ -15,7 +15,7 @@ module Gry
       opt.on('-d', '--debug', 'Output debug log.') {Gry.debug_mode!}
       opt.on('-p', '--process=VAL', 'Number of parallel processes.') {|v| @process = v.to_i}
       opt.on('-v', '--version', 'Display version.') {@version = true}
-      opt.on('-f', '--fast', 'Run only fast cops.') {@fast = true}
+      opt.on('--[no-]fast', 'Run only fast cops. Default: true') {|v| @fast = v}
       opt.on('--max-count=10', 'Upper limit of issues.') {|v| @max_count = v.to_i}
       opt.on('--min-difference=10', 'Lower limit of issues number difference') {|v| @min_difference = v.to_i}
 
