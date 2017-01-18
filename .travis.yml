@@ -1,9 +1,13 @@
 language: ruby
 cache: bundler
+
 rvm:
   - 2.3.3
   - 2.4.0
   - ruby-head
-gemfile:
-  - gemfiles/rubocop_0.47.0.gemfile
-  - gemfiles/rubocop_head.gemfile
+
+before_script:
+  - bundle exec appraisal install
+
+script:
+  - bundle exec appraisal rake
