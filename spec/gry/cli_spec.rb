@@ -19,13 +19,13 @@ describe Gry::CLI do
     end
 
     unless ENV['DONT_RUN_SLOW_SPEC']
-      context 'with --all --fast' do
-        let(:args){%w[--all --fast]}
+      context 'with --fast' do
+        let(:args){%w[--fast]}
         include_examples 'writes yaml'
       end
 
-      context 'with --all' do
-        let(:args){%w[--all]}
+      context 'without args' do
+        let(:args){%w[]}
         include_examples 'writes yaml'
       end
 

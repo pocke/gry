@@ -12,7 +12,7 @@ module Gry
         return
       end
 
-      cops = opt.all ? RubocopAdapter.configurable_cops : opt.args
+      cops = opt.args.empty? ? RubocopAdapter.configurable_cops : opt.args
       if opt.fast
         cops.reject!{|cop| cop == 'Style/AlignHash'}
       end

@@ -1,12 +1,9 @@
 module Gry
   class Option
-    class ParseError < StandardError; end
-
-    attr_reader :args, :all, :process, :version, :fast, :max_count, :min_difference
+    attr_reader :args, :process, :version, :fast, :max_count, :min_difference
 
     def initialize(argv)
       opt = OptionParser.new
-      @all = false
       @version = false
       @process = Parallel.processor_count
       @fast = false
@@ -16,7 +13,6 @@ module Gry
       opt.banner = 'Usage: gry [options] [Cop1, Cop2, ...]'
 
       opt.on('-d', '--debug', 'Output debug log.') {Gry.debug_mode!}
-      opt.on('-a', '--all', 'Run for all cops.') {@all = true}
       opt.on('-p', '--process=VAL', 'Number of parallel processes.') {|v| @process = v.to_i}
       opt.on('-v', '--version', 'Display version.') {@version = true}
       opt.on('-f', '--fast', 'Run only fast cops.') {@fast = true}
@@ -24,10 +20,6 @@ module Gry
       opt.on('--min-difference=10', 'Lower limit of issues number difference') {|v| @min_difference = v.to_i}
 
       @args = opt.parse(argv)
-
-      if @all && !@args.empty?
-        raise ParseError, 'Do not specify cop name with --all option'
-      end
     end
   end
 end

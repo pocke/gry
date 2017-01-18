@@ -19,7 +19,7 @@ $ gem install gry
 
 ```sh
 # Generate a .rubocop.yml for all configuratble cops.
-$ gry --all >> .rubocop.yml
+$ gry >> .rubocop.yml
 
 # Generate a .rubocop.yml for specified cops only.
 $ gry Style/AndOr Style/VariableName >> .rubocop.yml
