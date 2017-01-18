@@ -24,6 +24,11 @@ describe Gry::CLI do
         include_examples 'writes yaml'
       end
 
+      context 'with --no-fast' do
+        let(:args){%w[--no-fast]}
+        include_examples 'writes yaml'
+      end
+
       context 'without args' do
         let(:args){%w[]}
         include_examples 'writes yaml'
