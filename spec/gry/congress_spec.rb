@@ -54,7 +54,12 @@ describe Gry::Congress do
       let(:name){'Style/FooBar'}
       let(:max_count){9}
 
-      it {is_expected.to be_nil}
+      it 'returns a law' do
+        law = discuss
+        is_asserted_by{ law.is_a? Gry::Law }
+        is_asserted_by{ law.name == name }
+        is_asserted_by{ law.letter.nil? }
+      end
     end
 
     context 'when bill is rejected by min_difference' do
@@ -68,7 +73,12 @@ describe Gry::Congress do
       let(:name){'Style/FooBar'}
       let(:min_difference){20}
 
-      it {is_expected.to be_nil}
+      it 'returns a law' do
+        law = discuss
+        is_asserted_by{ law.is_a? Gry::Law }
+        is_asserted_by{ law.name == name }
+        is_asserted_by{ law.letter.nil? }
+      end
     end
   end
 end
