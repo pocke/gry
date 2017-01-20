@@ -1,8 +1,8 @@
 module Gry
-  module Formatter
+  class Formatter
     # @param gry_result [Array<Law>]
     # @return [String] a yaml string
-    def self.format(laws)
+    def format(laws)
       confs = laws.map do |law|
         to_comment(law.bill) +
           to_yaml({law.name => law.letter})
@@ -13,13 +13,14 @@ module Gry
         confs.join("\n")
     end
 
-    private_class_method
 
-    def self.to_yaml(hash)
+    private
+
+    def to_yaml(hash)
       YAML.dump(hash)[4..-1]
     end
 
-    def self.to_comment(set_count)
+    def to_comment(set_count)
       set_count.map do |setting, count|
         x = setting
           .reject{|key, _| key == 'Enabled'}
@@ -29,7 +30,7 @@ module Gry
       end.join
     end
 
-    def self.offenses(count)
+    def offenses(count)
       if count > 1
         'offenses'
       else

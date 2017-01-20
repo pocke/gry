@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe Gry::Formatter do
+  let(:fmt){Gry::Formatter.new}
+
   describe '.format' do
     context 'simple' do
       it 'retrns a YAML' do
@@ -34,7 +36,7 @@ Style/DotPosition:
   Enabled: true
         END
 
-        expect(Gry::Formatter.format(laws)).to eq expected
+        expect(fmt.format(laws)).to eq expected
       end
     end
 
@@ -86,7 +88,7 @@ Style/Alias:
   Enabled: true
         END
 
-        expect(Gry::Formatter.format(laws)).to eq expected
+        expect(fmt.format(laws)).to eq expected
       end
     end
 
@@ -138,7 +140,7 @@ Style/SpaceInsideHashLiteralBraces:
   Enabled: true
         END
 
-        expect(Gry::Formatter.format(laws)).to eq expected
+        expect(fmt.format(laws)).to eq expected
       end
     end
   end
