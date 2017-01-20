@@ -1,11 +1,25 @@
 module Gry
   class Formatter
+    def initialize(display_disabled_cops:)
+      @display_disabled_cops = display_disabled_cops
+    end
+
     # @param gry_result [Array<Law>]
     # @return [String] a yaml string
     def format(laws)
       confs = laws.map do |law|
-        to_comment(law.bill) +
-          to_yaml({law.name => law.letter})
+        if law.letter
+          letter = {law.name => law.letter}
+        else
+          if @display_disabled_cops
+            letter = {law.name => {'Enabled' => false}}
+          else
+            next
+          end
+        end
+        comment = to_comment(law.bill)
+        yaml = to_yaml(letter)
+        comment + yaml
       end.compact
 
       to_yaml(RubocopAdapter.config_base) +

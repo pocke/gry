@@ -28,7 +28,7 @@ module Gry
         congress.discuss(cop_name, bill)
       end
 
-      fmt = Formatter.new
+      fmt = Formatter.new(display_disabled_cops: opt.display_disabled_cops)
       writer.puts fmt.format(laws)
     end
   end
