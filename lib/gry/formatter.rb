@@ -1,11 +1,25 @@
 module Gry
-  module Formatter
+  class Formatter
+    def initialize(display_disabled_cops:)
+      @display_disabled_cops = display_disabled_cops
+    end
+
     # @param gry_result [Array<Law>]
     # @return [String] a yaml string
-    def self.format(laws)
+    def format(laws)
       confs = laws.map do |law|
-        to_comment(law.bill) +
-          to_yaml({law.name => law.letter})
+        if law.letter
+          letter = {law.name => law.letter}
+        else
+          if @display_disabled_cops
+            letter = {law.name => {'Enabled' => false}}
+          else
+            next
+          end
+        end
+        comment = to_comment(law.bill)
+        yaml = to_yaml(letter)
+        comment + yaml
       end.compact
 
       to_yaml(RubocopAdapter.config_base) +
@@ -13,13 +27,14 @@ module Gry
         confs.join("\n")
     end
 
-    private_class_method
 
-    def self.to_yaml(hash)
+    private
+
+    def to_yaml(hash)
       YAML.dump(hash)[4..-1]
     end
 
-    def self.to_comment(set_count)
+    def to_comment(set_count)
       set_count.map do |setting, count|
         x = setting
           .reject{|key, _| key == 'Enabled'}
@@ -29,7 +44,7 @@ module Gry
       end.join
     end
 
-    def self.offenses(count)
+    def offenses(count)
       if count > 1
         'offenses'
       else

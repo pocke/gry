@@ -14,6 +14,11 @@ module Gry
     #   }
     # @return [Law]
     def discuss(name, bill)
+      letter = letter(bill)
+      Law.new(name, bill, letter)
+    end
+
+    def letter(bill)
       # [[conf, count], ...]
       sorted = bill.sort_by{|_conf, count| count}
       min_count = sorted.first.last
@@ -22,8 +27,7 @@ module Gry
       second_count = sorted[1].last
       return nil if second_count - min_count < @min_difference
 
-      letter = sorted.first.first
-      Law.new(name, bill, letter)
+      sorted.first.first
     end
   end
 end

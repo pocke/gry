@@ -26,9 +26,10 @@ module Gry
       )
       laws = bills.map do |cop_name, bill|
         congress.discuss(cop_name, bill)
-      end.compact
+      end
 
-      writer.puts Formatter.format(laws)
+      fmt = Formatter.new(display_disabled_cops: opt.display_disabled_cops)
+      writer.puts fmt.format(laws)
     end
   end
 end
