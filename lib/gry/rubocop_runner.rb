@@ -1,5 +1,5 @@
 module Gry
-  # Run RuboCop with spwcify cops and config
+  # Run RuboCop with specific cops and config
   class RubocopRunner
     # @param cops [Array<String>] cop names. e.g.) ['Style/EmptyElse']
     # @param setting [Hash] e.g.) {'Style/EmptyElse' => {'EnforcedStyle' => 'both'}}
