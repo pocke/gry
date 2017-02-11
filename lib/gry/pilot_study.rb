@@ -40,7 +40,7 @@ module Gry
         cops, setting = *arg
         setting.each do |cop_name, s|
           res[cop_name] ||= {}
-          res[cop_name][s] ||= 0
+          res[cop_name][s] ||= []
         end
 
         RubocopRunner.new(cops, setting)
@@ -58,7 +58,7 @@ module Gry
           f['offenses'].each do |offense|
             cop_name = offense['cop_name']
             next if cop_name == 'Syntax' # Syntax cop is not configurable.
-            res[cop_name][setting[cop_name]] += 1
+            res[cop_name][setting[cop_name]].push(offense)
           end
         end
       end
@@ -73,10 +73,33 @@ module Gry
     # @param cop_name [String]
     # @return [Array<Hash>]
     def cop_configs(cop_name)
+      if RubocopAdapter.metrics_cop?(cop_name)
+        cop_configs_for_metrics(cop_name)
+      else
+        cop_configs_for_enforced_style(cop_name)
+      end
+    end
+
+    # @param cop_name [String]
+    # @return [Array<Hash>]
+    def cop_configs_for_metrics(cop_name)
+      [
+        {
+          cop_name => {
+            'Enabled' => true,
+            'Max' => 0,
+          }
+        }
+      ]
+    end
+
+    # @param cop_name [String]
+    # @return [Array<Hash>]
+    def cop_configs_for_enforced_style(cop_name)
       cop_config = RubocopAdapter.default_config[cop_name]
 
       # e.g. %w[EnforcedHashRocketStyle EnforcedColonStyle EnforcedLastArgumentHashStyle]
-      enforced_style_names = RubocopAdapter.configurable_styles(cop_config)
+      enforced_style_names = RubocopAdapter.enforced_styles(cop_config)
 
       # e.g. [
       #   %w[key separator table],

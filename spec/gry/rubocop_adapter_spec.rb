@@ -14,6 +14,7 @@ describe Gry::RubocopAdapter do
       expect(cops).not_to be_empty
       expect(cops).to be_all{|cop| cop.is_a? String}
       expect(cops).to be_include 'Style/Alias'
+      expect(cops).to be_include 'Metrics/AbcSize'
       expect(cops).not_to be_include 'Rails/NotNullColumn'
     end
 
@@ -36,23 +37,36 @@ describe Gry::RubocopAdapter do
     end
   end
 
-  describe '.configurable_styles' do
-    shared_examples 'returns_configurable_styles' do |cop_name, expected|
+  describe '.enforced_styles' do
+    shared_examples 'returns_enforced_styles' do |cop_name, expected|
       it "returns configurable styles for #{cop_name}" do
         cop_conf = Gry::RubocopAdapter.default_config[cop_name]
-        styles = Gry::RubocopAdapter.configurable_styles(cop_conf)
+        styles = Gry::RubocopAdapter.enforced_styles(cop_conf)
         expect(styles).to eq expected
       end
     end
 
-    include_examples 'returns_configurable_styles', 'Style/AndOr', %w[EnforcedStyle]
-    include_examples 'returns_configurable_styles', 'Style/NumericLiteralPrefix', %w[EnforcedOctalStyle]
-    include_examples 'returns_configurable_styles', 'Style/AlignHash', %w[
+    include_examples 'returns_enforced_styles', 'Style/AndOr', %w[EnforcedStyle]
+    include_examples 'returns_enforced_styles', 'Style/NumericLiteralPrefix', %w[EnforcedOctalStyle]
+    include_examples 'returns_enforced_styles', 'Style/AlignHash', %w[
       EnforcedHashRocketStyle
       EnforcedColonStyle
       EnforcedLastArgumentHashStyle
     ]
-    include_examples 'returns_configurable_styles', 'Rails/NotNullColumn', %w[]
+    include_examples 'returns_enforced_styles', 'Rails/NotNullColumn', %w[]
+  end
+
+  describe '.metrics_cop?' do
+    shared_examples :check do |cop_name, expected|
+      it "returns configurable styles for #{cop_name}" do
+        res = Gry::RubocopAdapter.metrics_cop?(cop_name)
+        expect(res).to eq expected
+      end
+    end
+
+    include_examples :check, 'Style/AndOr', false
+    include_examples :check, 'Metrics/AbcSize', true
+    include_examples :check, 'Performance/RedundantMerge', false
   end
 
   describe '.to_supported_styles' do

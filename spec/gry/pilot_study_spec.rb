@@ -21,7 +21,12 @@ describe Gry::PilotStudy do
           end
 
           value.values.each do |v|
-            is_asserted_by{ v.is_a? Integer }
+            is_asserted_by{ v.is_a? Array }
+            v.each do |offence|
+              is_asserted_by{ offence.is_a? Hash }
+              is_asserted_by{ !offence.empty? }
+              is_asserted_by{ offence['message'].is_a? String }
+            end
           end
         end
       end
@@ -62,6 +67,15 @@ describe Gry::PilotStudy do
         expect(config).to eq expected
       end
     end
+
+    include_examples 'returns_cop_configs', 'Metrics/AbcSize', [
+      {
+        'Metrics/AbcSize' => {
+          'Enabled' => true,
+          'Max' => 0,
+        },
+      },
+    ]
 
     include_examples 'returns_cop_configs', 'Style/AndOr', [
       {

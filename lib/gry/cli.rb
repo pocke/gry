@@ -19,10 +19,10 @@ module Gry
       pilot_study = Gry::PilotStudy.new(cops, process: opt.process)
 
       bills = pilot_study.analyze
-      # TODO: Specify the value from option
       congress = Congress.new(
         max_count: opt.max_count,
         min_difference: opt.min_difference,
+        metrics_percentile: opt.metrics_percentile,
       )
       laws = bills.map do |cop_name, bill|
         congress.discuss(cop_name, bill)
