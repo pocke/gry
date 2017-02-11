@@ -25,7 +25,8 @@ module Gry
     # @param cop_name [String]
     # @return [Boolean]
     def metrics_cop?(cop_name)
-      cop_name.start_with?('Metrics')
+      cop_name.start_with?('Metrics') &&
+        !%w[Metrics/ParameterLists Metrics/BlockNesting].include?(cop_name)
     end
 
     def to_supported_styles(enforced_style)
