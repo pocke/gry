@@ -119,7 +119,6 @@ module Gry
           cop_name => conf
         }
       end
-      
     end
   end
 end
