@@ -22,7 +22,7 @@ module Gry
       congress = Congress.new(
         max_count: opt.max_count,
         min_difference: opt.min_difference,
-        metrics_percentile: 95, # TODO
+        metrics_percentile: opt.metrics_percentile,
       )
       laws = bills.map do |cop_name, bill|
         congress.discuss(cop_name, bill)
