@@ -20,7 +20,7 @@ module Gry
       opt.on('--[no-]fast', 'Run only fast cops. Default: true') {|v| @fast = v}
       opt.on('--max-count=10', 'Upper limit of issues.') {|v| @max_count = v.to_i}
       opt.on('--min-difference=10', 'Lower limit of issues number difference') {|v| @min_difference = v.to_i}
-      opt.on('--metrics_percentile=95', 'Percentile for allowed complex code') {|v| @metrics_percentile = v.to_i}
+      opt.on('--metrics-percentile=95', 'Percentile for allowed complex code') {|v| @metrics_percentile = v.to_i}
       opt.on('--display-disabled-cops', 'Display disabled cops') {|v| @display_disabled_cops = v}
 
       @args = opt.parse(argv)
