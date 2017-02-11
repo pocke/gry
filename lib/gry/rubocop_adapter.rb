@@ -9,14 +9,14 @@ module Gry
     def configurable_cops
       conf = RuboCop::ConfigLoader.default_configuration.to_h
       conf
-        .reject{|_key, cop_conf| configurable_styles(cop_conf).empty?}
+        .reject{|_key, cop_conf| enforced_styles(cop_conf).empty?}
         .reject{|key, _cop_conf| !rails? && key.start_with?('Rails/')}
         .select{|key, _cop_conf| conf = config_specified_by_user.for_cop(key); conf.empty? || !conf['Enabled']}
         .keys
     end
 
     # @param cop_conf [Hash]
-    def configurable_styles(cop_conf)
+    def enforced_styles(cop_conf)
       cop_conf.keys.select do |key|
         key.start_with?('Enforced')
       end

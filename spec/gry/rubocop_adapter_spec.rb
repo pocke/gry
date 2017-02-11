@@ -36,23 +36,23 @@ describe Gry::RubocopAdapter do
     end
   end
 
-  describe '.configurable_styles' do
-    shared_examples 'returns_configurable_styles' do |cop_name, expected|
+  describe '.enforced_styles' do
+    shared_examples 'returns_enforced_styles' do |cop_name, expected|
       it "returns configurable styles for #{cop_name}" do
         cop_conf = Gry::RubocopAdapter.default_config[cop_name]
-        styles = Gry::RubocopAdapter.configurable_styles(cop_conf)
+        styles = Gry::RubocopAdapter.enforced_styles(cop_conf)
         expect(styles).to eq expected
       end
     end
 
-    include_examples 'returns_configurable_styles', 'Style/AndOr', %w[EnforcedStyle]
-    include_examples 'returns_configurable_styles', 'Style/NumericLiteralPrefix', %w[EnforcedOctalStyle]
-    include_examples 'returns_configurable_styles', 'Style/AlignHash', %w[
+    include_examples 'returns_enforced_styles', 'Style/AndOr', %w[EnforcedStyle]
+    include_examples 'returns_enforced_styles', 'Style/NumericLiteralPrefix', %w[EnforcedOctalStyle]
+    include_examples 'returns_enforced_styles', 'Style/AlignHash', %w[
       EnforcedHashRocketStyle
       EnforcedColonStyle
       EnforcedLastArgumentHashStyle
     ]
-    include_examples 'returns_configurable_styles', 'Rails/NotNullColumn', %w[]
+    include_examples 'returns_enforced_styles', 'Rails/NotNullColumn', %w[]
   end
 
   describe '.to_supported_styles' do

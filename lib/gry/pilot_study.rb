@@ -76,7 +76,7 @@ module Gry
       cop_config = RubocopAdapter.default_config[cop_name]
 
       # e.g. %w[EnforcedHashRocketStyle EnforcedColonStyle EnforcedLastArgumentHashStyle]
-      enforced_style_names = RubocopAdapter.configurable_styles(cop_config)
+      enforced_style_names = RubocopAdapter.enforced_styles(cop_config)
 
       # e.g. [
       #   %w[key separator table],
