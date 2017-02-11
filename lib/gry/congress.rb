@@ -24,13 +24,13 @@ module Gry
 
     def letter(name, bill)
       if RubocopAdapter.metrics_cop?(name)
-        letter_for_metrics(bill)
+        letter_for_metrics(name, bill)
       else
         letter_for_enforced_style(bill)
       end
     end
 
-    def letter_for_metrics(bill)
+    def letter_for_metrics(name, bill)
       raise "bill.size is not 1, got #{bill.size}" unless bill.size == 1
       values = bill
         .values[0]
@@ -39,9 +39,16 @@ module Gry
         .map(&:to_i)
         .sort
 
+      max = percentile(values)
+      if name == 'Metrics/AbcSize'
+        max = max.round(2)
+      else
+        max = max.round
+      end
+
       {
         'Enabled' => true,
-        'Max' => percentile(values),
+        'Max' => max,
       }
     end
 
