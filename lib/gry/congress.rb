@@ -18,6 +18,9 @@ module Gry
       Law.new(name, bill, letter)
     end
 
+
+    private
+
     def letter(bill)
       # [[conf, count], ...]
       sorted = bill.sort_by{|_conf, count| count}
@@ -28,6 +31,10 @@ module Gry
       return nil if second_count - min_count < @min_difference
 
       sorted.first.first
+    end
+
+    def letter_for_enforced_style
+      
     end
   end
 end
