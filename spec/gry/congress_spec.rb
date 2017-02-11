@@ -110,7 +110,7 @@ describe Gry::Congress do
             {'message' => 'Line is too long. [108/0]'},
             {'message' => 'Line is too long. [109/0]'},
             {'message' => 'Line is too long. [110/0]'},
-          ].flatten,
+          ].flatten.shuffle,
         }
       end
       let(:name){'Metrics/LineLength'}

@@ -37,6 +37,7 @@ module Gry
         .map{|offense| offense['message']}
         .map{|message| message[%r!\[([0-9.]+)/[0-9.]+\]$!, 1]}
         .map(&:to_i)
+        .sort
 
       {
         'Enabled' => true,

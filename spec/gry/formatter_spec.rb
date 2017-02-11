@@ -5,17 +5,21 @@ describe Gry::Formatter do
   let(:display_disabled_cops){false}
 
   describe '.format' do
+    def offenses(count)
+      [{'message' => 'hoge'}] * count
+    end
+
     context 'simple' do
       it 'retrns a YAML' do
         bill = {
           {
             'EnforcedStyle' => 'leading',
             'Enabled' => true,
-          } => 10,
+          } => offenses(10),
           {
             'EnforcedStyle' => 'trailing',
             'Enabled' => true,
-          } => 20,
+          } => offenses(20),
         }
         letter = {
           'EnforcedStyle' => 'leading',
@@ -41,6 +45,36 @@ Style/DotPosition:
       end
     end
 
+    context 'with a metrics cop' do
+      it 'retrns a YAML' do
+        bill = {
+          {
+            'EnforcedStyle' => 'leading',
+            'Enabled' => true,
+          } => offenses(10),
+        }
+        letter = {
+          'Max' => 40,
+          'Enabled' => true,
+        }
+
+        laws = [
+          Gry::Law.new('Metrics/LineLength', bill, letter)
+        ]
+
+        expected = <<-END
+AllCops:
+  TargetRubyVersion: 2.3
+
+Metrics/LineLength:
+  Max: 40
+  Enabled: true
+        END
+
+        expect(fmt.format(laws)).to eq expected
+      end
+    end
+
     context 'has two results' do
       it 'returns a YAML' do
         laws = [
@@ -48,11 +82,11 @@ Style/DotPosition:
             {
               'EnforcedStyle' => 'leading',
               'Enabled' => true,
-            } => 10,
+            } => offenses(10),
             {
               'EnforcedStyle' => 'trailing',
               'Enabled' => true,
-            } => 20,
+            } => offenses(20),
           },{
             'EnforcedStyle' => 'leading',
             'Enabled' => true,
@@ -61,11 +95,11 @@ Style/DotPosition:
             {
               'EnforcedStyle' => 'prefer_alias',
               'Enabled' => true,
-            } => 42,
+            } => offenses(42),
             {
               'EnforcedStyle' => 'prefer_alias_method',
               'Enabled' => true,
-            } => 5,
+            } => offenses(5),
           },{
             'EnforcedStyle' => 'prefer_alias_method',
             'Enabled' => true,
@@ -100,22 +134,22 @@ Style/Alias:
             'EnforcedStyle' => 'space',
             'EnforcedStyleForEmptyBraces' => 'no_space',
             'Enabled' => true,
-          } => 1,
+          } => offenses(1),
           {
             'EnforcedStyle' => 'space',
             'EnforcedStyleForEmptyBraces' => 'space',
             'Enabled' => true,
-          } => 3,
+          } => offenses(3),
           {
             'EnforcedStyle' => 'no_space',
             'EnforcedStyleForEmptyBraces' => 'no_space',
             'Enabled' => true,
-          } => 2,
+          } => offenses(2),
           {
             'EnforcedStyle' => 'no_space',
             'EnforcedStyleForEmptyBraces' => 'space',
             'Enabled' => true,
-          } => 4,
+          } => offenses(4),
         }
         letter = {
           'EnforcedStyle' => 'space',
@@ -153,11 +187,11 @@ Style/SpaceInsideHashLiteralBraces:
           {
             'EnforcedStyle' => 'leading',
             'Enabled' => true,
-          } => 10,
+          } => offenses(10),
           {
             'EnforcedStyle' => 'trailing',
             'Enabled' => true,
-          } => 20,
+          } => offenses(20),
         }
         letter = {
           'EnforcedStyle' => 'leading',
@@ -187,11 +221,11 @@ Style/DotPosition:
           {
             'EnforcedStyle' => 'leading',
             'Enabled' => true,
-          } => 10,
+          } => offenses(10),
           {
             'EnforcedStyle' => 'trailing',
             'Enabled' => true,
-          } => 20,
+          } => offenses(20),
         }
 
         laws = [

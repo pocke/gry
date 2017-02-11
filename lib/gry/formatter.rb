@@ -17,7 +17,9 @@ module Gry
             next
           end
         end
-        comment = to_comment(law.bill)
+        comment = RubocopAdapter.metrics_cop?(law.name) ?
+          '' :
+          to_comment(law.bill)
         yaml = to_yaml(letter)
         comment + yaml
       end.compact
@@ -35,7 +37,9 @@ module Gry
     end
 
     def to_comment(set_count)
-      set_count.map do |setting, count|
+      set_count.map do |setting, offenses|
+        count = offenses.size
+
         x = setting
           .reject{|key, _| key == 'Enabled'}
           .map{|key, value| "#{key}: #{value}"}
