@@ -5,5 +5,5 @@ rvm:
   - 2.4.0
   - ruby-head
 gemfile:
-  - gemfiles/rubocop_0.47.0.gemfile
+  - gemfiles/rubocop_0.47.1.gemfile
   - gemfiles/rubocop_head.gemfile
