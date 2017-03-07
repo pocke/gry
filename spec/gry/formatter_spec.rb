@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Gry::Formatter do
   let(:fmt){Gry::Formatter.new(display_disabled_cops: display_disabled_cops)}
   let(:display_disabled_cops){false}

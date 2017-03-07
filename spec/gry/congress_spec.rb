@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Gry::Congress do
   describe '#discuss' do
     subject(:discuss) do

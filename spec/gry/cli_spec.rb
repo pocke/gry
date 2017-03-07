@@ -1,4 +1,3 @@
-require 'spec_helper'
 require 'stringio'
 
 describe Gry::CLI do
