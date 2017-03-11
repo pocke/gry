@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Gry::RubocopAdapter do
   describe '.default_config' do
     it 'returns a RuboCop::Config' do

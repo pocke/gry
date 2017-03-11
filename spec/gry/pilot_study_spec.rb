@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Gry::PilotStudy do
   describe '#analyze' do
     break if ENV['DONT_RUN_SLOW_SPEC']

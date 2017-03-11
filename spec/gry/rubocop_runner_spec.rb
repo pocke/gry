@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Gry::RubocopRunner do
   describe '.new' do
     it 'sets @setting' do
