@@ -12,7 +12,7 @@ describe Gry::RubocopAdapter do
       expect(cops).not_to be_empty
       expect(cops).to be_all{|cop| cop.is_a? String}
       expect(cops).to be_include 'Style/Alias'
-      expect(cops).to be_include 'Metrics/AbcSize'
+      # expect(cops).to be_include 'Metrics/AbcSize'
       expect(cops).not_to be_include 'Rails/NotNullColumn'
     end
 

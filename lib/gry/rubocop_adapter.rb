@@ -11,7 +11,7 @@ module Gry
       conf
         .select{|key, cop_conf| !enforced_styles(cop_conf).empty? || metrics_cop?(key) }
         .reject{|key, _cop_conf| !rails? && key.start_with?('Rails/')}
-        .select{|key, _cop_conf| conf = config_specified_by_user.for_cop(key); conf.empty? || !conf['Enabled']}
+        .select{|key, _cop_conf| conf = config_specified_by_user.for_cop(key); conf.empty? || conf.keys == ['Enabled']} # Ignore always configured cops
         .keys
     end
 
