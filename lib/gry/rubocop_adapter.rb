@@ -25,8 +25,12 @@ module Gry
     # @param cop_name [String]
     # @return [Boolean]
     def metrics_cop?(cop_name)
-      cop_name.start_with?('Metrics') &&
-        !%w[Metrics/ParameterLists Metrics/BlockNesting].include?(cop_name)
+      return false unless cop_name.start_with?('Metrics')
+      # https://github.com/bbatsov/rubocop/pull/4055
+      exclude_cops = Gem::Version.new(RuboCop::Version.version) >= Gem::Version.new('0.48.0') ?
+        %w[Metrics/BlockNesting] :
+        %w[Metrics/ParameterLists Metrics/BlockNesting]
+      !exclude_cops.include?(cop_name)
     end
 
     def to_supported_styles(enforced_style)
