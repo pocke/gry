@@ -19,7 +19,7 @@ module Gry
         cops.reject!{|cop| cop == 'Style/AlignHash'}
       end
 
-      bills = restore_cache(cops) || begin
+      bills = (opt.cache && restore_cache(cops)) || begin
         pilot_study = Gry::PilotStudy.new(cops, process: opt.process)
         pilot_study.analyze.tap do |b|
           save_cache(b, cops)
