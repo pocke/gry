@@ -115,4 +115,12 @@ describe Gry::RubocopAdapter do
       end
     end
   end
+
+  describe '.find_target_files' do
+    subject{Gry::RubocopAdapter.find_target_files}
+
+    it {is_expected.to be_a Enumerable}
+    it {is_expected.to be_all{|line| line.is_a? String}}
+    it {is_expected.to be_none{|line| line =~ /\A\s+\z/}}
+  end
 end

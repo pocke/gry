@@ -74,5 +74,9 @@ module Gry
         }
       })
     end
+
+    def find_target_files
+      `rubocop --list-target-files`.each_line
+    end
   end
 end

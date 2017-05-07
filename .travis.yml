@@ -8,3 +8,8 @@ gemfile:
   - gemfiles/rubocop_0.48.1.gemfile
   - gemfiles/rubocop_0.47.1.gemfile
   - gemfiles/rubocop_head.gemfile
+matrix:
+  include:
+  allow_failures:
+    - gemfile: gemfiles/rubocop_head.gemfile
+  fast_finish: true
