@@ -4,6 +4,7 @@ require 'yaml'
 require 'json'
 require 'optparse'
 require 'open3'
+require 'pathname'
 
 require 'rubocop'
 require 'parallel'
