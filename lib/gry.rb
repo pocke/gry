@@ -5,6 +5,7 @@ require 'json'
 require 'optparse'
 require 'open3'
 require 'pathname'
+require 'digest/sha1'
 
 require 'rubocop'
 require 'parallel'

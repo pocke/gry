@@ -1,6 +1,6 @@
 module Gry
   class CLI
-    CACHE_PATH = Pathname(ENV['XDG_CACHE_HOME'] || '~/.cache').expand_path / 'gry/cache'
+    CACHE_DIR = Pathname(ENV['XDG_CACHE_HOME'] || '~/.cache').expand_path / 'gry'
 
     def initialize(argv)
       @argv = argv
@@ -40,19 +40,18 @@ module Gry
     end
 
     def save_cache(bills, cops)
-      cache_dir = CACHE_PATH.dirname
-      Dir.mkdir(cache_dir) unless cache_dir.exist?
+      Dir.mkdir(cache_dir) unless CACHE_DIR.exist?
       cache = {
         bills: bills,
         cops: cops,
         created_at: Time.now,
       }
-      File.write(CACHE_PATH, Marshal.dump(cache))
+      File.write(cache_path, Marshal.dump(cache))
     end
 
     def restore_cache(cops)
-      return unless CACHE_PATH.exist?
-      cache = Marshal.load(File.read(CACHE_PATH))
+      return unless cache_path.exist?
+      cache = Marshal.load(File.read(cache_path))
 
       return unless cops == cache[:cops]
 
@@ -61,6 +60,10 @@ module Gry
       return unless not_changed
 
       return cache[:bills]
+    end
+
+    def cache_path
+      CACHE_DIR / Digest::SHA1.hexdigest(Dir.pwd)
     end
   end
 end
