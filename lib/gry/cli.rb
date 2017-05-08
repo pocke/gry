@@ -40,7 +40,7 @@ module Gry
     end
 
     def save_cache(bills, cops)
-      Dir.mkdir(cache_dir) unless CACHE_DIR.exist?
+      Dir.mkdir(CACHE_DIR) unless CACHE_DIR.exist?
       cache = {
         bills: bills,
         cops: cops,
