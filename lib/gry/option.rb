@@ -1,6 +1,6 @@
 module Gry
   class Option
-    attr_reader :args, :process, :version, :fast, :max_count, :min_difference, :display_disabled_cops, :metrics_percentile, :cache
+    attr_reader :args, :process, :version, :fast, :max_count, :min_difference, :display_disabled_cops, :metrics_percentile, :cache, :raw
 
     def initialize(argv)
       opt = OptionParser.new
@@ -12,6 +12,7 @@ module Gry
       @display_disabled_cops = false
       @metrics_percentile = 95
       @cache = true
+      @raw = false
 
       opt.banner = 'Usage: gry [options] [Cop1, Cop2, ...]'
 
@@ -24,6 +25,7 @@ module Gry
       opt.on('--metrics-percentile=95', 'Percentile for allowed complex code') {|v| @metrics_percentile = v.to_i}
       opt.on('--display-disabled-cops', 'Display disabled cops') {|v| @display_disabled_cops = v}
       opt.on('--[no-]cache', 'Run gry with cache. Default: true') {|v| @cache = v}
+      opt.on('--raw', 'Display raw data(JSON). Default: false') {|v| @raw = v}
 
       @args = opt.parse(argv)
     end
