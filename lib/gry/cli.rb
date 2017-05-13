@@ -25,6 +25,10 @@ module Gry
           save_cache(b, cops)
         end
       end
+      if opt.raw
+        writer.puts JSON.generate(bills)
+        return
+      end
 
       congress = Congress.new(
         max_count: opt.max_count,
@@ -38,6 +42,8 @@ module Gry
       fmt = Formatter.new(display_disabled_cops: opt.display_disabled_cops)
       writer.puts fmt.format(laws)
     end
+
+    private
 
     def save_cache(bills, cops)
       Dir.mkdir(CACHE_DIR) unless CACHE_DIR.exist?
