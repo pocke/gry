@@ -16,7 +16,7 @@ module Gry
 
       cops = opt.args.empty? ? RubocopAdapter.configurable_cops : opt.args
       if opt.fast
-        cops.reject!{|cop| cop == 'Style/AlignHash'}
+        cops.reject!{|cop| cop == 'Layout/AlignHash'}
       end
 
       bills = (opt.cache && restore_cache(cops)) || begin
