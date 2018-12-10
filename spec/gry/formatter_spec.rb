@@ -30,7 +30,7 @@ describe Gry::Formatter do
 
         expected = <<-END
 AllCops:
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 2.4
 
 # EnforcedStyle: leading => 10 offenses
 # EnforcedStyle: trailing => 20 offenses
@@ -62,7 +62,7 @@ Style/DotPosition:
 
         expected = <<-END
 AllCops:
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 2.4
 
 Metrics/LineLength:
   Max: 40
@@ -106,7 +106,7 @@ Metrics/LineLength:
         
         expected = <<-END
 AllCops:
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 2.4
 
 # EnforcedStyle: leading => 10 offenses
 # EnforcedStyle: trailing => 20 offenses
@@ -161,7 +161,7 @@ Style/Alias:
 
         expected = <<-END
 AllCops:
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 2.4
 
 # EnforcedStyle: space, EnforcedStyleForEmptyBraces: no_space => 1 offense
 # EnforcedStyle: space, EnforcedStyleForEmptyBraces: space => 3 offenses
@@ -202,7 +202,7 @@ Style/SpaceInsideHashLiteralBraces:
 
         expected = <<-END
 AllCops:
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 2.4
 
 # EnforcedStyle: leading => 10 offenses
 # EnforcedStyle: trailing => 20 offenses
@@ -232,7 +232,7 @@ Style/DotPosition:
 
         expected = <<-END
 AllCops:
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 2.4
 
 # EnforcedStyle: leading => 10 offenses
 # EnforcedStyle: trailing => 20 offenses

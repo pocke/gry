@@ -1,5 +1,10 @@
 AllCops:
-  TargetRubyVersion: 2.3
-inherit_gem:
-  meowcop:
-    - config/rubocop.yml
+  TargetRubyVersion: 2.4
+  DisabledByDefault: true
+
+Lint:
+  Enabled: true
+
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - spec/**/*_spec.rb

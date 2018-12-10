@@ -31,8 +31,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "guard-rspec", "~> 4.7.3"
   spec.add_development_dependency "guard-bundler", "~> 2.1.0"
   spec.add_development_dependency "guard-rubocop", "~> 1.2.0"
-  spec.add_development_dependency "rubocop", ">= 0.47.0"
-  spec.add_development_dependency "meowcop", ">= 1.7.0"
+  spec.add_development_dependency "rubocop", ">= 0.61.1"
   spec.add_development_dependency "appraisal"
 
   spec.add_runtime_dependency "rubocop", ">= 0.49.0"
