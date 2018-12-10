@@ -1,12 +1,12 @@
 language: ruby
 cache: bundler
 rvm:
-  - 2.3.3
-  - 2.4.1
+  - 2.4.5
+  - 2.5.3
   - ruby-head
 gemfile:
-  - gemfiles/rubocop_0.48.1.gemfile
-  - gemfiles/rubocop_0.47.1.gemfile
+  - gemfiles/rubocop_0.49.0.gemfile # The oldest version in the supported versions
+  - gemfiles/rubocop_0.61.1.gemfile # The newest version in the supported versions
   - gemfiles/rubocop_head.gemfile
 matrix:
   include:

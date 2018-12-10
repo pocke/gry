@@ -46,7 +46,7 @@ describe Gry::RubocopAdapter do
 
     include_examples 'returns_enforced_styles', 'Style/AndOr', %w[EnforcedStyle]
     include_examples 'returns_enforced_styles', 'Style/NumericLiteralPrefix', %w[EnforcedOctalStyle]
-    include_examples 'returns_enforced_styles', 'Style/AlignHash', %w[
+    include_examples 'returns_enforced_styles', 'Layout/AlignHash', %w[
       EnforcedHashRocketStyle
       EnforcedColonStyle
       EnforcedLastArgumentHashStyle

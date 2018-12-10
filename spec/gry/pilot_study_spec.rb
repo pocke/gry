@@ -43,7 +43,7 @@ describe Gry::PilotStudy do
     context 'with fast cops only' do
       let(:cops)  {
         Gry::RubocopAdapter.configurable_cops
-          .reject{|cop| cop == 'Style/AlignHash'}
+          .reject{|cop| cop == 'Layout/AlignHash'}
       }
 
       include_examples 'returns_a_valid_rubocop_yml'
@@ -105,9 +105,9 @@ describe Gry::PilotStudy do
       }
     ]
 
-    include_examples 'returns_cop_configs', 'Style/AlignHash', [
+    include_examples 'returns_cop_configs', 'Layout/AlignHash', [
       {
-        'Style/AlignHash' => {
+        'Layout/AlignHash' => {
           'EnforcedHashRocketStyle' => 'key',
           'EnforcedColonStyle' => 'key',
           'EnforcedLastArgumentHashStyle' => 'always_inspect',
@@ -115,7 +115,7 @@ describe Gry::PilotStudy do
         },
       },
       {
-        'Style/AlignHash' => {
+        'Layout/AlignHash' => {
           'EnforcedHashRocketStyle' => 'key',
           'EnforcedColonStyle' => 'key',
           'EnforcedLastArgumentHashStyle' => 'always_ignore',
@@ -123,7 +123,7 @@ describe Gry::PilotStudy do
         },
       },
       {
-        'Style/AlignHash' => {
+        'Layout/AlignHash' => {
           'EnforcedHashRocketStyle' => 'key',
           'EnforcedColonStyle' => 'key',
           'EnforcedLastArgumentHashStyle' => 'ignore_implicit',
@@ -131,7 +131,7 @@ describe Gry::PilotStudy do
         },
       },
       {
-        'Style/AlignHash' => {
+        'Layout/AlignHash' => {
           'EnforcedHashRocketStyle' => 'key',
           'EnforcedColonStyle' => 'key',
           'EnforcedLastArgumentHashStyle' => 'ignore_explicit',
@@ -140,7 +140,7 @@ describe Gry::PilotStudy do
       },
 
       {
-        'Style/AlignHash' => {
+        'Layout/AlignHash' => {
           'EnforcedHashRocketStyle' => 'key',
           'EnforcedColonStyle' => 'separator',
           'EnforcedLastArgumentHashStyle' => 'always_inspect',
@@ -148,7 +148,7 @@ describe Gry::PilotStudy do
         },
       },
       {
-        'Style/AlignHash' => {
+        'Layout/AlignHash' => {
           'EnforcedHashRocketStyle' => 'key',
           'EnforcedColonStyle' => 'separator',
           'EnforcedLastArgumentHashStyle' => 'always_ignore',
@@ -156,7 +156,7 @@ describe Gry::PilotStudy do
         },
       },
       {
-        'Style/AlignHash' => {
+        'Layout/AlignHash' => {
           'EnforcedHashRocketStyle' => 'key',
           'EnforcedColonStyle' => 'separator',
           'EnforcedLastArgumentHashStyle' => 'ignore_implicit',
@@ -164,7 +164,7 @@ describe Gry::PilotStudy do
         },
       },
       {
-        'Style/AlignHash' => {
+        'Layout/AlignHash' => {
           'EnforcedHashRocketStyle' => 'key',
           'EnforcedColonStyle' => 'separator',
           'EnforcedLastArgumentHashStyle' => 'ignore_explicit',
@@ -173,7 +173,7 @@ describe Gry::PilotStudy do
       },
 
       {
-        'Style/AlignHash' => {
+        'Layout/AlignHash' => {
           'EnforcedHashRocketStyle' => 'key',
           'EnforcedColonStyle' => 'table',
           'EnforcedLastArgumentHashStyle' => 'always_inspect',
@@ -181,7 +181,7 @@ describe Gry::PilotStudy do
         },
       },
       {
-        'Style/AlignHash' => {
+        'Layout/AlignHash' => {
           'EnforcedHashRocketStyle' => 'key',
           'EnforcedColonStyle' => 'table',
           'EnforcedLastArgumentHashStyle' => 'always_ignore',
@@ -189,7 +189,7 @@ describe Gry::PilotStudy do
         },
       },
       {
-        'Style/AlignHash' => {
+        'Layout/AlignHash' => {
           'EnforcedHashRocketStyle' => 'key',
           'EnforcedColonStyle' => 'table',
           'EnforcedLastArgumentHashStyle' => 'ignore_implicit',
@@ -197,7 +197,7 @@ describe Gry::PilotStudy do
         },
       },
       {
-        'Style/AlignHash' => {
+        'Layout/AlignHash' => {
           'EnforcedHashRocketStyle' => 'key',
           'EnforcedColonStyle' => 'table',
           'EnforcedLastArgumentHashStyle' => 'ignore_explicit',
@@ -207,7 +207,7 @@ describe Gry::PilotStudy do
 
 
       {
-        'Style/AlignHash' => {
+        'Layout/AlignHash' => {
           'EnforcedHashRocketStyle' => 'separator',
           'EnforcedColonStyle' => 'key',
           'EnforcedLastArgumentHashStyle' => 'always_inspect',
@@ -215,7 +215,7 @@ describe Gry::PilotStudy do
         },
       },
       {
-        'Style/AlignHash' => {
+        'Layout/AlignHash' => {
           'EnforcedHashRocketStyle' => 'separator',
           'EnforcedColonStyle' => 'key',
           'EnforcedLastArgumentHashStyle' => 'always_ignore',
@@ -223,7 +223,7 @@ describe Gry::PilotStudy do
         },
       },
       {
-        'Style/AlignHash' => {
+        'Layout/AlignHash' => {
           'EnforcedHashRocketStyle' => 'separator',
           'EnforcedColonStyle' => 'key',
           'EnforcedLastArgumentHashStyle' => 'ignore_implicit',
@@ -231,7 +231,7 @@ describe Gry::PilotStudy do
         },
       },
       {
-        'Style/AlignHash' => {
+        'Layout/AlignHash' => {
           'EnforcedHashRocketStyle' => 'separator',
           'EnforcedColonStyle' => 'key',
           'EnforcedLastArgumentHashStyle' => 'ignore_explicit',
@@ -240,7 +240,7 @@ describe Gry::PilotStudy do
       },
 
       {
-        'Style/AlignHash' => {
+        'Layout/AlignHash' => {
           'EnforcedHashRocketStyle' => 'separator',
           'EnforcedColonStyle' => 'separator',
           'EnforcedLastArgumentHashStyle' => 'always_inspect',
@@ -248,7 +248,7 @@ describe Gry::PilotStudy do
         },
       },
       {
-        'Style/AlignHash' => {
+        'Layout/AlignHash' => {
           'EnforcedHashRocketStyle' => 'separator',
           'EnforcedColonStyle' => 'separator',
           'EnforcedLastArgumentHashStyle' => 'always_ignore',
@@ -256,7 +256,7 @@ describe Gry::PilotStudy do
         },
       },
       {
-        'Style/AlignHash' => {
+        'Layout/AlignHash' => {
           'EnforcedHashRocketStyle' => 'separator',
           'EnforcedColonStyle' => 'separator',
           'EnforcedLastArgumentHashStyle' => 'ignore_implicit',
@@ -264,7 +264,7 @@ describe Gry::PilotStudy do
         },
       },
       {
-        'Style/AlignHash' => {
+        'Layout/AlignHash' => {
           'EnforcedHashRocketStyle' => 'separator',
           'EnforcedColonStyle' => 'separator',
           'EnforcedLastArgumentHashStyle' => 'ignore_explicit',
@@ -273,7 +273,7 @@ describe Gry::PilotStudy do
       },
 
       {
-        'Style/AlignHash' => {
+        'Layout/AlignHash' => {
           'EnforcedHashRocketStyle' => 'separator',
           'EnforcedColonStyle' => 'table',
           'EnforcedLastArgumentHashStyle' => 'always_inspect',
@@ -281,7 +281,7 @@ describe Gry::PilotStudy do
         },
       },
       {
-        'Style/AlignHash' => {
+        'Layout/AlignHash' => {
           'EnforcedHashRocketStyle' => 'separator',
           'EnforcedColonStyle' => 'table',
           'EnforcedLastArgumentHashStyle' => 'always_ignore',
@@ -289,7 +289,7 @@ describe Gry::PilotStudy do
         },
       },
       {
-        'Style/AlignHash' => {
+        'Layout/AlignHash' => {
           'EnforcedHashRocketStyle' => 'separator',
           'EnforcedColonStyle' => 'table',
           'EnforcedLastArgumentHashStyle' => 'ignore_implicit',
@@ -297,7 +297,7 @@ describe Gry::PilotStudy do
         },
       },
       {
-        'Style/AlignHash' => {
+        'Layout/AlignHash' => {
           'EnforcedHashRocketStyle' => 'separator',
           'EnforcedColonStyle' => 'table',
           'EnforcedLastArgumentHashStyle' => 'ignore_explicit',
@@ -307,7 +307,7 @@ describe Gry::PilotStudy do
 
 
       {
-        'Style/AlignHash' => {
+        'Layout/AlignHash' => {
           'EnforcedHashRocketStyle' => 'table',
           'EnforcedColonStyle' => 'key',
           'EnforcedLastArgumentHashStyle' => 'always_inspect',
@@ -315,7 +315,7 @@ describe Gry::PilotStudy do
         },
       },
       {
-        'Style/AlignHash' => {
+        'Layout/AlignHash' => {
           'EnforcedHashRocketStyle' => 'table',
           'EnforcedColonStyle' => 'key',
           'EnforcedLastArgumentHashStyle' => 'always_ignore',
@@ -323,7 +323,7 @@ describe Gry::PilotStudy do
         },
       },
       {
-        'Style/AlignHash' => {
+        'Layout/AlignHash' => {
           'EnforcedHashRocketStyle' => 'table',
           'EnforcedColonStyle' => 'key',
           'EnforcedLastArgumentHashStyle' => 'ignore_implicit',
@@ -331,7 +331,7 @@ describe Gry::PilotStudy do
         },
       },
       {
-        'Style/AlignHash' => {
+        'Layout/AlignHash' => {
           'EnforcedHashRocketStyle' => 'table',
           'EnforcedColonStyle' => 'key',
           'EnforcedLastArgumentHashStyle' => 'ignore_explicit',
@@ -340,7 +340,7 @@ describe Gry::PilotStudy do
       },
 
       {
-        'Style/AlignHash' => {
+        'Layout/AlignHash' => {
           'EnforcedHashRocketStyle' => 'table',
           'EnforcedColonStyle' => 'separator',
           'EnforcedLastArgumentHashStyle' => 'always_inspect',
@@ -348,7 +348,7 @@ describe Gry::PilotStudy do
         },
       },
       {
-        'Style/AlignHash' => {
+        'Layout/AlignHash' => {
           'EnforcedHashRocketStyle' => 'table',
           'EnforcedColonStyle' => 'separator',
           'EnforcedLastArgumentHashStyle' => 'always_ignore',
@@ -356,7 +356,7 @@ describe Gry::PilotStudy do
         },
       },
       {
-        'Style/AlignHash' => {
+        'Layout/AlignHash' => {
           'EnforcedHashRocketStyle' => 'table',
           'EnforcedColonStyle' => 'separator',
           'EnforcedLastArgumentHashStyle' => 'ignore_implicit',
@@ -364,7 +364,7 @@ describe Gry::PilotStudy do
         },
       },
       {
-        'Style/AlignHash' => {
+        'Layout/AlignHash' => {
           'EnforcedHashRocketStyle' => 'table',
           'EnforcedColonStyle' => 'separator',
           'EnforcedLastArgumentHashStyle' => 'ignore_explicit',
@@ -373,7 +373,7 @@ describe Gry::PilotStudy do
       },
 
       {
-        'Style/AlignHash' => {
+        'Layout/AlignHash' => {
           'EnforcedHashRocketStyle' => 'table',
           'EnforcedColonStyle' => 'table',
           'EnforcedLastArgumentHashStyle' => 'always_inspect',
@@ -381,7 +381,7 @@ describe Gry::PilotStudy do
         },
       },
       {
-        'Style/AlignHash' => {
+        'Layout/AlignHash' => {
           'EnforcedHashRocketStyle' => 'table',
           'EnforcedColonStyle' => 'table',
           'EnforcedLastArgumentHashStyle' => 'always_ignore',
@@ -389,7 +389,7 @@ describe Gry::PilotStudy do
         },
       },
       {
-        'Style/AlignHash' => {
+        'Layout/AlignHash' => {
           'EnforcedHashRocketStyle' => 'table',
           'EnforcedColonStyle' => 'table',
           'EnforcedLastArgumentHashStyle' => 'ignore_implicit',
@@ -397,7 +397,7 @@ describe Gry::PilotStudy do
         },
       },
       {
-        'Style/AlignHash' => {
+        'Layout/AlignHash' => {
           'EnforcedHashRocketStyle' => 'table',
           'EnforcedColonStyle' => 'table',
           'EnforcedLastArgumentHashStyle' => 'ignore_explicit',
