@@ -30,7 +30,7 @@ License
 -------
 
 
-Copyright 2017 Masataka Kuwabara (pocke)
+Copyright 2017 Masataka Pocke Kuwabara
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
