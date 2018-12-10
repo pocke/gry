@@ -6,7 +6,7 @@ rvm:
   - ruby-head
 gemfile:
   - gemfiles/rubocop_0.49.0.gemfile # The oldest version in the supported versions
-  - gemfiles/rubocop_0.60.1.gemfile # The newest version in the supported versions
+  - gemfiles/rubocop_0.61.1.gemfile # The newest version in the supported versions
   - gemfiles/rubocop_head.gemfile
 matrix:
   include:
