@@ -3,6 +3,7 @@ cache: bundler
 rvm:
   - 2.4.5
   - 2.5.3
+  - 2.6.0
   - ruby-head
 gemfile:
   - gemfiles/rubocop_0.49.0.gemfile # The oldest version in the supported versions
