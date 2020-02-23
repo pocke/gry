@@ -18,7 +18,7 @@ $ gem install gry
 ## Usage
 
 ```sh
-# Generate a .rubocop.yml for all configuratble cops.
+# Generate a .rubocop.yml for all configurable cops.
 $ gry >> .rubocop.yml
 
 # Generate a .rubocop.yml for specified cops only.
